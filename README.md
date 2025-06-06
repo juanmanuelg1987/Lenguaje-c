@@ -143,10 +143,6 @@ int main() {
  Leer números hasta ingresar un 0. Al finalizar, mostrar cuántos números se ingresaron.
 
 Pseudocódigo:
-
-nginx
-Copiar
-Editar
 Inicio
     contador ← 0
     Leer numero
