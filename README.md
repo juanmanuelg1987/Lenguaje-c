@@ -81,10 +81,6 @@ Ingresar una nota del 1 al 10 y mostrar:
 “Excelente” si es 10.
 
 Pseudocódigo:
-
-nginx
-Copiar
-Editar
 Inicio
     Leer nota
     Si nota < 6 entonces
@@ -124,8 +120,6 @@ int main() {
  Mostrar los números del 1 al 10 usando un bucle for.
 
 Pseudocódigo:
-
-css
 Inicio
     Para i desde 1 hasta 10 hacer
         Escribir i
