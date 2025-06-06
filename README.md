@@ -8,7 +8,7 @@ Incluye pseudocódigo y código C para cada caso.
 
 ## ✅ Ejercicio 1: Condicional simple
 
-📌 Leer un número entero y mostrar si es mayor que 100.
+ Leer un número entero y mostrar si es mayor que 100.
 
 **Pseudocódigo:**
 
@@ -39,7 +39,7 @@ int main() {
 
 
 ✅ Ejercicio 2: Condicional doble (if-else)
-📌 Leer una edad e indicar si la persona es mayor o menor de edad.
+ Leer una edad e indicar si la persona es mayor o menor de edad.
 
 Pseudocódigo:
 Inicio
@@ -70,7 +70,7 @@ int main() {
 
 
 ✅ Ejercicio 3: Condicional múltiple (if - else if)
-📌 Ingresar una nota del 1 al 10 y mostrar:
+Ingresar una nota del 1 al 10 y mostrar:
 
 “Insuficiente” si es menor que 6.
 
@@ -99,9 +99,6 @@ Inicio
 Fin
 Código en C:
 
-c
-Copiar
-Editar
 #include <stdio.h>
 
 int main() {
@@ -121,24 +118,22 @@ int main() {
 
     return 0;
 }
+
+
 ✅ Ejercicio 4: Estructura for
-📌 Mostrar los números del 1 al 10 usando un bucle for.
+ Mostrar los números del 1 al 10 usando un bucle for.
 
 Pseudocódigo:
 
 css
-Copiar
-Editar
 Inicio
     Para i desde 1 hasta 10 hacer
         Escribir i
     FinPara
 Fin
+
 Código en C:
 
-c
-Copiar
-Editar
 #include <stdio.h>
 
 int main() {
@@ -148,8 +143,10 @@ int main() {
 
     return 0;
 }
+
+
 ✅ Ejercicio 5: Estructura while
-📌 Leer números hasta ingresar un 0. Al finalizar, mostrar cuántos números se ingresaron.
+ Leer números hasta ingresar un 0. Al finalizar, mostrar cuántos números se ingresaron.
 
 Pseudocódigo:
 
@@ -167,9 +164,7 @@ Inicio
 Fin
 Código en C:
 
-c
-Copiar
-Editar
+
 #include <stdio.h>
 
 int main() {
@@ -186,25 +181,22 @@ int main() {
     printf("Se ingresaron %d números.\n", contador);
     return 0;
 }
+
+
 ✅ Ejercicio 6: Estructura do-while
-📌 Repetir el ingreso de una clave hasta que el usuario escriba “1234”. Mostrar un mensaje de bienvenida al ingresar correctamente.
+Repetir el ingreso de una clave hasta que el usuario escriba “1234”. Mostrar un mensaje de bienvenida al ingresar correctamente.
 
 Pseudocódigo:
 
-java
-Copiar
-Editar
 Inicio
     Repetir
         Leer clave
     Hasta que clave = 1234
     Escribir "Bienvenido"
 Fin
+
 Código en C:
 
-c
-Copiar
-Editar
 #include <stdio.h>
 
 int main() {
@@ -218,8 +210,10 @@ int main() {
     printf("¡Bienvenido!\n");
     return 0;
 }
+
+
 ✅ Ejercicio 7: Contadores y acumuladores
-📌 Leer 5 números enteros. Mostrar la suma total y cuántos eran positivos.
+Leer 5 números enteros. Mostrar la suma total y cuántos eran positivos.
 
 Pseudocódigo:
 
@@ -239,11 +233,9 @@ Inicio
     Escribir "Suma total: ", suma
     Escribir "Cantidad de positivos: ", positivos
 Fin
+
 Código en C:
 
-c
-Copiar
-Editar
 #include <stdio.h>
 
 int main() {
@@ -262,25 +254,21 @@ int main() {
     printf("Cantidad de positivos: %d\n", positivos);
     return 0;
 }
+
+
 ✅ Ejercicio 8: Validación de entrada
-📌 Pedir una nota entre 1 y 10. Si se ingresa un número inválido, volver a pedir.
+Pedir una nota entre 1 y 10. Si se ingresa un número inválido, volver a pedir.
 
 Pseudocódigo:
 
-nginx
-Copiar
-Editar
 Inicio
     Repetir
         Leer nota
     Hasta que nota ≥ 1 y nota ≤ 10
     Escribir "Nota válida: ", nota
 Fin
-Código en C:
 
-c
-Copiar
-Editar
+Código en C:
 #include <stdio.h>
 
 int main() {
@@ -294,25 +282,20 @@ int main() {
     printf("Nota válida: %d\n", nota);
     return 0;
 }
+
+
 ✅ Ejercicio 9: Tabla de multiplicar
-📌 Pedir un número e imprimir su tabla de multiplicar del 1 al 10.
+Pedir un número e imprimir su tabla de multiplicar del 1 al 10.
 
 Pseudocódigo:
-
-css
-Copiar
-Editar
 Inicio
     Leer numero
     Para i desde 1 hasta 10 hacer
         Escribir numero * i
     FinPara
 Fin
-Código en C:
 
-c
-Copiar
-Editar
+Código en C:
 #include <stdio.h>
 
 int main() {
@@ -327,14 +310,13 @@ int main() {
 
     return 0;
 }
+
+
 ✅ Ejercicio 10: Conteo de pares e impares
-📌 Leer 10 números e indicar cuántos son pares y cuántos impares.
+Leer 10 números e indicar cuántos son pares y cuántos impares.
 
 Pseudocódigo:
 
-lua
-Copiar
-Editar
 Inicio
     pares ← 0
     impares ← 0
@@ -349,11 +331,9 @@ Inicio
     Escribir "Pares: ", pares
     Escribir "Impares: ", impares
 Fin
+
 Código en C:
 
-c
-Copiar
-Editar
 #include <stdio.h>
 
 int main() {
