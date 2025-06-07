@@ -51,6 +51,8 @@ Inicio
     FinSi
 Fin
 
+  
+**Código en C:**
 
 #include <stdio.h>
 
@@ -93,7 +95,8 @@ Inicio
         Escribir "Excelente"
     FinSi
 Fin
-Código en C:
+
+ **Código en C:**
 
 #include <stdio.h>
 
@@ -126,7 +129,7 @@ Inicio
     FinPara
 Fin
 
-Código en C:
+**Código en C:** 
 
 #include <stdio.h>
 
@@ -152,8 +155,8 @@ Inicio
     FinMientras
     Escribir "Cantidad de números ingresados: ", contador
 Fin
-Código en C:
 
+**Código en C:**
 
 #include <stdio.h>
 
@@ -185,7 +188,7 @@ Inicio
     Escribir "Bienvenido"
 Fin
 
-Código en C:
+**Código en C:**
 
 #include <stdio.h>
 
@@ -224,7 +227,7 @@ Inicio
     Escribir "Cantidad de positivos: ", positivos
 Fin
 
-Código en C:
+**Código en C:**
 
 #include <stdio.h>
 
@@ -258,7 +261,8 @@ Inicio
     Escribir "Nota válida: ", nota
 Fin
 
-Código en C:
+**Código en C:**
+
 #include <stdio.h>
 
 int main() {
@@ -285,7 +289,8 @@ Inicio
     FinPara
 Fin
 
-Código en C:
+**Código en C:**
+
 #include <stdio.h>
 
 int main() {
@@ -322,7 +327,7 @@ Inicio
     Escribir "Impares: ", impares
 Fin
 
-Código en C:
+**Código en C:**
 
 #include <stdio.h>
 
