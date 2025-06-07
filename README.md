@@ -1,12 +1,12 @@
 # Lenguaje-c
-# 🧠 Trabajo Práctico – Programación en Lenguaje C
+# Trabajo Práctico – Programación en Lenguaje C
 
 Resolución de 10 ejercicios de lógica en lenguaje C, usando condicionales, estructuras repetitivas y validación de datos.  
 Incluye pseudocódigo y código C para cada caso.
 
 ---
 
-## ✅ Ejercicio 1: Condicional simple
+## Ejercicio 1: Condicional simple
 
  Leer un número entero y mostrar si es mayor que 100.
 
@@ -38,7 +38,7 @@ int main() {
 }
 
 
-✅ Ejercicio 2: Condicional doble (if-else)
+Ejercicio 2: Condicional doble (if-else)
  Leer una edad e indicar si la persona es mayor o menor de edad.
 
 Pseudocódigo:
@@ -69,7 +69,7 @@ int main() {
 }
 
 
-✅ Ejercicio 3: Condicional múltiple (if - else if)
+Ejercicio 3: Condicional múltiple (if - else if)
 Ingresar una nota del 1 al 10 y mostrar:
 
 “Insuficiente” si es menor que 6.
@@ -116,7 +116,7 @@ int main() {
 }
 
 
-✅ Ejercicio 4: Estructura for
+Ejercicio 4: Estructura for
  Mostrar los números del 1 al 10 usando un bucle for.
 
 Pseudocódigo:
@@ -139,7 +139,7 @@ int main() {
 }
 
 
-✅ Ejercicio 5: Estructura while
+Ejercicio 5: Estructura while
  Leer números hasta ingresar un 0. Al finalizar, mostrar cuántos números se ingresaron.
 
 Pseudocódigo:
@@ -173,7 +173,7 @@ int main() {
 }
 
 
-✅ Ejercicio 6: Estructura do-while
+Ejercicio 6: Estructura do-while
 Repetir el ingreso de una clave hasta que el usuario escriba “1234”. Mostrar un mensaje de bienvenida al ingresar correctamente.
 
 Pseudocódigo:
@@ -202,7 +202,7 @@ int main() {
 }
 
 
-✅ Ejercicio 7: Contadores y acumuladores
+Ejercicio 7: Contadores y acumuladores
 Leer 5 números enteros. Mostrar la suma total y cuántos eran positivos.
 
 Pseudocódigo:
@@ -246,7 +246,7 @@ int main() {
 }
 
 
-✅ Ejercicio 8: Validación de entrada
+Ejercicio 8: Validación de entrada
 Pedir una nota entre 1 y 10. Si se ingresa un número inválido, volver a pedir.
 
 Pseudocódigo:
@@ -274,7 +274,7 @@ int main() {
 }
 
 
-✅ Ejercicio 9: Tabla de multiplicar
+Ejercicio 9: Tabla de multiplicar
 Pedir un número e imprimir su tabla de multiplicar del 1 al 10.
 
 Pseudocódigo:
@@ -302,7 +302,7 @@ int main() {
 }
 
 
-✅ Ejercicio 10: Conteo de pares e impares
+Ejercicio 10: Conteo de pares e impares
 Leer 10 números e indicar cuántos son pares y cuántos impares.
 
 Pseudocódigo:
