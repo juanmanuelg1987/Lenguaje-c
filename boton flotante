@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Botón Flotante - Demo para Clase</title>
+    <title>Botón Flotante - HTML y CSS</title>
     <style>
         /* Estilos básicos para la página */
         * {
@@ -55,39 +55,64 @@
             margin: 20px 0;
         }
 
-        /* ESTILOS DEL BOTÓN FLOTANTE */
+        .code-example {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        /* AQUÍ COMIENZA EL BOTÓN FLOTANTE */
         .floating-button {
+            /* POSICIÓN FIJA - La clave principal */
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 30px;    /* 30px desde abajo */
+            right: 30px;     /* 30px desde la derecha */
+            
+            /* TAMAÑO Y FORMA */
             width: 60px;
             height: 60px;
+            border-radius: 50%;  /* Hace el círculo perfecto */
+            
+            /* APARIENCIA */
             background: linear-gradient(45deg, #ff6b6b, #ee5a52);
             border: none;
-            border-radius: 50%;
-            cursor: pointer;
+            color: white;
+            font-size: 24px;
+            
+            /* EFECTOS */
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            
+            /* LAYERING - Aparece encima de todo */
             z-index: 1000;
+            
+            /* TRANSICIONES SUAVES */
             transition: all 0.3s ease;
+            
+            /* CENTRAR CONTENIDO */
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 24px;
         }
 
-        /* Efectos hover y animaciones */
+        /* EFECTOS AL PASAR EL MOUSE */
         .floating-button:hover {
-            transform: scale(1.1);
+            transform: scale(1.1);  /* Crece 10% */
             box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
             background: linear-gradient(45deg, #ee5a52, #ff6b6b);
         }
 
+        /* EFECTO AL HACER CLIC */
         .floating-button:active {
-            transform: scale(0.95);
+            transform: scale(0.95);  /* Se reduce momentáneamente */
         }
 
-        /* Animación de pulso */
+        /* ANIMACIÓN DE PULSO - Para llamar la atención */
         .floating-button::before {
             content: '';
             position: absolute;
@@ -112,57 +137,7 @@
             }
         }
 
-        /* Modal para mostrar mensaje */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 15% auto;
-            padding: 30px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .close-button {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: background 0.3s ease;
-        }
-
-        .close-button:hover {
-            background: #764ba2;
-        }
-
-        /* Responsivo */
+        /* DISEÑO RESPONSIVO */
         @media (max-width: 768px) {
             .floating-button {
                 bottom: 20px;
@@ -172,78 +147,76 @@
                 font-size: 20px;
             }
         }
+
+        /* CONTENIDO EXTRA PARA MOSTRAR EL SCROLL */
+        .extra-content {
+            height: 800px;
+            background: linear-gradient(180deg, #f7fafc 0%, #edf2f7 100%);
+            margin-top: 30px;
+            padding: 40px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            color: #4a5568;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🚀 Demo de Botón Flotante</h1>
+        <h1>Botón Flotante con HTML y CSS</h1>
         
         <div class="content">
-            <p>Este es un ejemplo práctico de cómo implementar un <strong>botón flotante</strong> en HTML, CSS y JavaScript. El botón permanece fijo en la pantalla independientemente del scroll.</p>
+            <p>Este es un ejemplo práctico de cómo crear un <strong>botón flotante</strong> usando únicamente HTML y CSS. El botón permanece fijo en la pantalla sin importar el scroll.</p>
             
             <div class="highlight">
-                <strong>Características del botón flotante:</strong><br>
-                • Posición fija en la pantalla<br>
-                • Efectos hover interactivos<br>
-                • Animación de pulso<br>
-                • Responsive design<br>
-                • Funcionalidad JavaScript
+                <strong>Propiedades CSS clave:</strong><br>
+                • <code>position: fixed</code> - Posición fija respecto al viewport<br>
+                • <code>bottom: 30px</code> - Distancia desde abajo<br>
+                • <code>right: 30px</code> - Distancia desde la derecha<br>
+                • <code>z-index: 1000</code> - Aparece por encima de otros elementos
+            </div>
+
+            <div class="code-example">
+.floating-button {
+    position: fixed;     /* ¡La propiedad clave! */
+    bottom: 30px;        /* Posición desde abajo */
+    right: 30px;         /* Posición desde la derecha */
+    width: 60px;         /* Ancho del botón */
+    height: 60px;        /* Alto del botón */
+    border-radius: 50%;  /* Forma circular */
+    z-index: 1000;       /* Por encima de todo */
+}
             </div>
             
-            <p>Los botones flotantes son muy útiles para acciones importantes como "Contactar", "Ir arriba", "Chat de ayuda", etc. Se mantienen siempre visibles para el usuario.</p>
+            <p><strong>¿Por qué usar position: fixed?</strong><br>
+            A diferencia de <code>position: absolute</code>, el elemento con <code>position: fixed</code> se posiciona respecto al viewport (ventana del navegador), no respecto a su contenedor padre. Esto hace que permanezca en el mismo lugar incluso cuando el usuario hace scroll.</p>
             
-            <p>Prueba hacer clic en el botón flotante rojo que está en la esquina inferior derecha de la pantalla. También observa los efectos cuando pasas el mouse por encima.</p>
-            
-            <p>Este tipo de elementos mejoran significativamente la experiencia del usuario (UX) al proporcionar acceso rápido a funciones importantes sin importar dónde se encuentre en la página.</p>
+            <div class="highlight">
+                <strong>Efectos implementados solo con CSS:</strong><br>
+                • Transiciones suaves con <code>transition</code><br>
+                • Efectos hover con <code>:hover</code><br>
+                • Animación de pulso con <code>@keyframes</code><br>
+                • Diseño responsivo con <code>@media queries</code>
+            </div>
         </div>
     </div>
 
-    <!-- BOTÓN FLOTANTE -->
-    <button class="floating-button" onclick="openModal()" title="Botón de Acción Flotante">
+    <div class="extra-content">
+        <div>
+            <p>📜 Haz scroll para ver cómo el botón flotante permanece fijo</p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.7;">
+                El botón rojo siempre estará visible en la esquina inferior derecha
+            </p>
+        </div>
+    </div>
+
+    <!-- EL BOTÓN FLOTANTE -->
+    <button class="floating-button" title="Botón Flotante">
         💬
     </button>
 
-    <!-- MODAL -->
-    <div id="modal" class="modal" onclick="closeModal(event)">
-        <div class="modal-content">
-            <h2>¡Botón Flotante Activado! 🎉</h2>
-            <p>Has hecho clic en el botón flotante. Este tipo de interacción es muy común en aplicaciones web modernas.</p>
-            <button class="close-button" onclick="closeModal()">Cerrar</button>
-        </div>
-    </div>
-
-    <script>
-        // JavaScript para el funcionamiento del botón flotante
-        function openModal() {
-            document.getElementById('modal').style.display = 'block';
-            // Opcional: agregar clase para animaciones
-            document.body.style.overflow = 'hidden'; // Previene scroll
-        }
-
-        function closeModal(event) {
-            // Si se hace clic fuera del modal o en el botón cerrar
-            if (event && event.target !== event.currentTarget) return;
-            
-            document.getElementById('modal').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restaura scroll
-        }
-
-        // Cerrar modal con tecla Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
-
-        // Opcional: Mostrar/ocultar botón basado en scroll
-        window.addEventListener('scroll', function() {
-            const button = document.querySelector('.floating-button');
-            if (window.scrollY > 100) {
-                button.style.opacity = '1';
-            } else {
-                button.style.opacity = '0.7';
-            }
-        });
-    </script>
 </body>
 </html>
