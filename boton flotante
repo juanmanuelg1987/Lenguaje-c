@@ -167,6 +167,8 @@
 <body>
     <div class="container">
         <h1>Botón Flotante con HTML y CSS</h1>
+        <h2>German-Nadia-Denis-Juanmanuel</h2>
+        <p>German-Nadia-Denis-Juanmanuel</p>
         
         <div class="content">
             <p>Este es un ejemplo práctico de cómo crear un <strong>botón flotante</strong> usando únicamente HTML y CSS. El botón permanece fijo en la pantalla sin importar el scroll.</p>
