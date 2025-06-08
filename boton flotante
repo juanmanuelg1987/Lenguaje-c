@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón Flotante - Demo para Clase</title>
+    <style>
+        /* Estilos básicos para la página */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .content {
+            margin-bottom: 30px;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            text-align: justify;
+        }
+
+        .highlight {
+            background-color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+        }
+
+        /* ESTILOS DEL BOTÓN FLOTANTE */
+        .floating-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        /* Efectos hover y animaciones */
+        .floating-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #ee5a52, #ff6b6b);
+        }
+
+        .floating-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Animación de pulso */
+        .floating-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            border: 2px solid #ff6b6b;
+            animation: pulse 2s infinite;
+            opacity: 0;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Modal para mostrar mensaje */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+
+        .close-button:hover {
+            background: #764ba2;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .floating-button {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Demo de Botón Flotante</h1>
+        
+        <div class="content">
+            <p>Este es un ejemplo práctico de cómo implementar un <strong>botón flotante</strong> en HTML, CSS y JavaScript. El botón permanece fijo en la pantalla independientemente del scroll.</p>
+            
+            <div class="highlight">
+                <strong>Características del botón flotante:</strong><br>
+                • Posición fija en la pantalla<br>
+                • Efectos hover interactivos<br>
+                • Animación de pulso<br>
+                • Responsive design<br>
+                • Funcionalidad JavaScript
+            </div>
+            
+            <p>Los botones flotantes son muy útiles para acciones importantes como "Contactar", "Ir arriba", "Chat de ayuda", etc. Se mantienen siempre visibles para el usuario.</p>
+            
+            <p>Prueba hacer clic en el botón flotante rojo que está en la esquina inferior derecha de la pantalla. También observa los efectos cuando pasas el mouse por encima.</p>
+            
+            <p>Este tipo de elementos mejoran significativamente la experiencia del usuario (UX) al proporcionar acceso rápido a funciones importantes sin importar dónde se encuentre en la página.</p>
+        </div>
+    </div>
+
+    <!-- BOTÓN FLOTANTE -->
+    <button class="floating-button" onclick="openModal()" title="Botón de Acción Flotante">
+        💬
+    </button>
+
+    <!-- MODAL -->
+    <div id="modal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <h2>¡Botón Flotante Activado! 🎉</h2>
+            <p>Has hecho clic en el botón flotante. Este tipo de interacción es muy común en aplicaciones web modernas.</p>
+            <button class="close-button" onclick="closeModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript para el funcionamiento del botón flotante
+        function openModal() {
+            document.getElementById('modal').style.display = 'block';
+            // Opcional: agregar clase para animaciones
+            document.body.style.overflow = 'hidden'; // Previene scroll
+        }
+
+        function closeModal(event) {
+            // Si se hace clic fuera del modal o en el botón cerrar
+            if (event && event.target !== event.currentTarget) return;
+            
+            document.getElementById('modal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restaura scroll
+        }
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Opcional: Mostrar/ocultar botón basado en scroll
+        window.addEventListener('scroll', function() {
+            const button = document.querySelector('.floating-button');
+            if (window.scrollY > 100) {
+                button.style.opacity = '1';
+            } else {
+                button.style.opacity = '0.7';
+            }
+        });
+    </script>
+</body>
+</html>
