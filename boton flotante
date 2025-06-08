@@ -206,7 +206,7 @@
 
     <div class="extra-content">
         <div>
-            <p>📜 Haz scroll para ver cómo el botón flotante permanece fijo</p>
+            <p>Haz scroll para ver cómo el botón flotante permanece fijo</p>
             <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.7;">
                 El botón rojo siempre estará visible en la esquina inferior derecha
             </p>
