@@ -295,13 +295,16 @@
     <!-- SECCIÓN 1: INTRODUCCIÓN -->
     <section class="section">
         <div class="container">
-            <h1>🎯 Guía Completa: Botones Flotantes</h1>
+            <h1>Guía Completa: Botones Flotantes</h1>
+
             <p style="font-size: 1.2em; text-align: center; margin-bottom: 30px;">
                 Aprende a crear diferentes tipos de botones flotantes con HTML y CSS
             </p>
+
+        
             
             <div class="explanation">
-                <h2>¿Qué es un botón flotante?</h2>
+                <h3>¿Qué es un botón flotante?</h3>
                 <p><strong>Un botón flotante</strong> es un elemento que permanece fijo en la pantalla independientemente del scroll. Se posiciona usando <span class="highlight">position: fixed</span> y coordenadas específicas.</p>
             </div>
 
@@ -446,7 +449,7 @@
 
             <div class="explanation">
                 <p style="text-align: center; font-size: 1.2em; color: #4a5568; margin-top: 30px;">
-                    <strong>¡Perfecto para tu clase! 🎉</strong><br>
+                    <strong>Espero que les guste! De parte de German, Nadia, Denis y Juan</strong><br>
                     Estos ejemplos muestran el poder del CSS para crear interfaces interactivas.
                 </p>
             </div>
