@@ -3,230 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Botón Flotante - HTML y CSS</title>
-    <style>
-        /* Estilos básicos para la página */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.95);
-            margin-top: 50px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            text-align: center;
-            color: #826196;
-            margin-bottom: 30px;
-            font-size: 2.5em;
-        }
-
-          h2 {
-            text-align: center;
-            color: #4a5568;
-            margin-bottom: 30px;
-            font-size: 2em;
-        }
-
-
-        .content {
-            margin-bottom: 30px;
-        }
-
-        .content p {
-            margin-bottom: 20px;
-            font-size: 1.1em;
-            text-align: justify;
-        }
-
-        .highlight {
-            background-color: #e2e8f0;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-            margin: 20px 0;
-        }
-
-        .code-example {
-            background-color: #2d3748;
-            color: #e2e8f0;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            overflow-x: auto;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-        }
-
-        /* AQUÍ COMIENZA EL BOTÓN FLOTANTE */
-        .floating-button {
-            /* POSICIÓN FIJA - La clave principal */
-            position: fixed;
-            bottom: 30px;    /* 30px desde abajo */
-            right: 30px;     /* 30px desde la derecha */
-            
-            /* TAMAÑO Y FORMA */
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;  /* Hace el círculo perfecto */
-            
-            /* APARIENCIA */
-            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
-            border: none;
-            color: white;
-            font-size: 24px;
-            
-            /* EFECTOS */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            
-            /* LAYERING - Aparece encima de todo */
-            z-index: 1000;
-            
-            /* TRANSICIONES SUAVES */
-            transition: all 0.3s ease;
-            
-            /* CENTRAR CONTENIDO */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* EFECTOS AL PASAR EL MOUSE */
-        .floating-button:hover {
-            transform: scale(1.1);  /* Crece 10% */
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-            background: linear-gradient(45deg, #ee5a52, #ff6b6b);
-        }
-
-        /* EFECTO AL HACER CLIC */
-        .floating-button:active {
-            transform: scale(0.95);  /* Se reduce momentáneamente */
-        }
-
-        /* ANIMACIÓN DE PULSO - Para llamar la atención */
-        .floating-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 50%;
-            border: 2px solid #ff6b6b;
-            animation: pulse 2s infinite;
-            opacity: 0;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
-        }
-
-        /* DISEÑO RESPONSIVO */
-        @media (max-width: 768px) {
-            .floating-button {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-        }
-
-        /* CONTENIDO EXTRA PARA MOSTRAR EL SCROLL */
-        .extra-content {
-            height: 800px;
-            background: linear-gradient(180deg, #f7fafc 0%, #edf2f7 100%);
-            margin-top: 30px;
-            padding: 40px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            color: #4a5568;
-            text-align: center;
-        }
-    </style>
+    <title>Botones Flotantes - Exposición Completa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Botón Flotante con HTML y CSS</h1>
-        <h2>German-Nadia-Denis-Juanmanuel</h2>
-    
-        
-        <div class="content">
-            <p>Este es un ejemplo práctico de cómo crear un <strong>botón flotante</strong> usando únicamente HTML y CSS. El botón permanece fijo en la pantalla sin importar el scroll.</p>
-            
-            <div class="highlight">
-                <strong>Propiedades CSS clave:</strong><br>
-                • <code>position: fixed</code> - Posición fija respecto al viewport<br>
-                • <code>bottom: 30px</code> - Distancia desde abajo<br>
-                • <code>right: 30px</code> - Distancia desde la derecha<br>
-                • <code>z-index: 1000</code> - Aparece por encima de otros elementos
+    <!-- Contenido principal para demostrar el contexto -->
+    <header>
+        <h1>Botones Flotantes (Floating Action Buttons - FAB)</h1>
+        <p>Demostración interactiva de diferentes tipos de botones flotantes</p>
+    </header>
+
+    <main>
+        <section class="info-section">
+            <h2>¿Qué es un Botón Flotante?</h2>
+            <div class="info-card">
+                <h3>Definición</h3>
+                <p>Un botón flotante es un elemento de interfaz de usuario que permanece visible y accesible mientras el usuario navega por una página web o aplicación. Se caracteriza por:</p>
+                <ul>
+                    <li><strong>Posición fija:</strong> Permanece en la misma ubicación sin importar el scroll</li>
+                    <li><strong>Alta visibilidad:</strong> Diseñado para destacar sobre el contenido</li>
+                    <li><strong>Acción primaria:</strong> Representa la acción más importante de la página</li>
+                    <li><strong>Fácil acceso:</strong> Siempre disponible para el usuario</li>
+                </ul>
             </div>
 
-            <div class="code-example">
-.floating-button {
-    position: fixed;     /* ¡La propiedad clave! */
-    bottom: 30px;        /* Posición desde abajo */
-    right: 30px;         /* Posición desde la derecha */
-    width: 60px;         /* Ancho del botón */
-    height: 60px;        /* Alto del botón */
-    border-radius: 50%;  /* Forma circular */
-    z-index: 1000;       /* Por encima de todo */
-}
+            <div class="info-card">
+                <h3>Funciones Principales</h3>
+                <ul>
+                    <li><strong>Crear contenido:</strong> Agregar nuevos elementos (posts, comentarios, archivos)</li>
+                    <li><strong>Navegación rápida:</strong> Ir al inicio, menú principal, o página anterior</li>
+                    <li><strong>Comunicación:</strong> Enviar mensajes, llamadas, emails</li>
+                    <li><strong>Acciones frecuentes:</strong> Compartir, favoritos, configuraciones</li>
+                    <li><strong>Ayuda y soporte:</strong> Chat en vivo, FAQ, contacto</li>
+                </ul>
             </div>
-            
-            <p><strong>¿Por qué usar position: fixed?</strong><br>
-            A diferencia de <code>position: absolute</code>, el elemento con <code>position: fixed</code> se posiciona respecto al viewport (ventana del navegador), no respecto a su contenedor padre. Esto hace que permanezca en el mismo lugar incluso cuando el usuario hace scroll.</p>
-            
-            <div class="highlight">
-                <strong>Efectos implementados solo con CSS:</strong><br>
-                • Transiciones suaves con <code>transition</code><br>
-                • Efectos hover con <code>:hover</code><br>
-                • Animación de pulso con <code>@keyframes</code><br>
-                • Diseño responsivo con <code>@media queries</code>
+
+            <div class="info-card">
+                <h3>Tipos de Botones Flotantes</h3>
+                <div class="types-grid">
+                    <div class="type-item">
+                        <h4>FAB Simple</h4>
+                        <p>Un solo botón con una acción específica</p>
+                    </div>
+                    <div class="type-item">
+                        <h4>FAB Expandible</h4>
+                        <p>Se expande para mostrar múltiples opciones</p>
+                    </div>
+                    <div class="type-item">
+                        <h4>FAB Múltiple</h4>
+                        <p>Varios botones flotantes independientes</p>
+                    </div>
+                    <div class="type-item">
+                        <h4>FAB con Tooltip</h4>
+                        <p>Incluye texto explicativo al hacer hover</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div class="extra-content">
-        <div>
-            <p>Haz scroll para ver cómo el botón flotante permanece fijo</p>
-            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.7;">
-                El botón rojo siempre estará visible en la esquina inferior derecha
-            </p>
-        </div>
-    </div>
+        <!-- Contenido de relleno para demostrar el scroll -->
+        <section class="demo-content">
+            <h2>Contenido de Ejemplo</h2>
+            <p>Este contenido es extenso para demostrar cómo los botones flotantes permanecen visibles durante el scroll.</p>
+            
+            <div class="content-block">
+                <h3>Ventajas de los Botones Flotantes</h3>
+                <p>Los botones flotantes ofrecen múltiples beneficios en el diseño de interfaces:</p>
+                <p><strong>Accesibilidad:</strong> Siempre están disponibles, sin necesidad de buscar en menús o barras de herramientas.</p>
+                <p><strong>Consistencia:</strong> Mantienen la misma posición en toda la aplicación, creando una experiencia predecible.</p>
+                <p><strong>Eficiencia:</strong> Reducen el número de clics necesarios para realizar acciones importantes.</p>
+            </div>
 
-    <!-- EL BOTÓN FLOTANTE -->
-    <button class="floating-button" title="Botón Flotante">
-        💬
+            <div class="content-block">
+                <h3>Mejores Prácticas</h3>
+                <p><strong>Posicionamiento:</strong> Ubicar en esquinas que no interfieran con el contenido principal.</p>
+                <p><strong>Tamaño:</strong> Suficientemente grande para ser fácil de tocar (mínimo 44px en móviles).</p>
+                <p><strong>Color:</strong> Usar colores que contrasten con el fondo pero mantengan la armonía visual.</p>
+                <p><strong>Animaciones:</strong> Incluir transiciones suaves para mejorar la experiencia del usuario.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>Casos de Uso Comunes</h3>
+                <p><strong>Redes Sociales:</strong> Crear nuevo post, compartir contenido.</p>
+                <p><strong>E-commerce:</strong> Agregar al carrito, ver carrito de compras.</p>
+                <p><strong>Aplicaciones de Productividad:</strong> Crear nueva tarea, nota o proyecto.</p>
+                <p><strong>Sitios Web Corporativos:</strong> Contactar soporte, solicitar información.</p>
+            </div>
+
+            <!-- Más contenido para scroll -->
+            <div class="content-block">
+                <h3>Consideraciones de Diseño</h3>
+                <p>Al implementar botones flotantes, es importante considerar el contexto y las necesidades específicas de los usuarios. El botón debe representar la acción más importante y frecuente de la página.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>Compatibilidad y Responsive Design</h3>
+                <p>Los botones flotantes deben adaptarse a diferentes tamaños de pantalla y dispositivos, manteniendo su funcionalidad y accesibilidad en todos los contextos.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Botón Flotante Simple -->
+    <button class="fab fab-simple" id="fabSimple" title="Agregar nuevo elemento">
+        <i class="fas fa-plus"></i>
     </button>
 
+    <!-- Botón Flotante con Tooltip -->
+    <button class="fab fab-tooltip" id="fabTooltip" title="Ir al inicio">
+        <i class="fas fa-arrow-up"></i>
+        <span class="tooltip">Ir al inicio</span>
+    </button>
+
+    <!-- Botón Flotante Expandible -->
+    <div class="fab-container" id="fabContainer">
+        <button class="fab fab-main" id="fabMain">
+            <i class="fas fa-bars" id="fabIcon"></i>
+        </button>
+        <div class="fab-options" id="fabOptions">
+            <button class="fab fab-option" data-action="share">
+                <i class="fas fa-share"></i>
+            </button>
+            <button class="fab fab-option" data-action="favorite">
+                <i class="fas fa-heart"></i>
+            </button>
+            <button class="fab fab-option" data-action="message">
+                <i class="fas fa-envelope"></i>
+            </button>
+            <button class="fab fab-option" data-action="call">
+                <i class="fas fa-phone"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Botones Flotantes Múltiples -->
+    <div class="fab-multiple">
+        <button class="fab fab-chat" title="Chat en vivo">
+            <i class="fas fa-comments"></i>
+        </button>
+        <button class="fab fab-help" title="Ayuda">
+            <i class="fas fa-question"></i>
+        </button>
+    </div>
+
+    <!-- Notificación para mostrar acciones -->
+    <div class="notification" id="notification">
+        <span id="notificationText">Acción realizada</span>
+        <button class="notification-close" onclick="hideNotification()">×</button>
+    </div>
+
+    <script>
+        // Funcionalidad del botón simple
+        document.getElementById('fabSimple').addEventListener('click', function() {
+            showNotification('Agregar nuevo elemento');
+        });
+
+        // Funcionalidad del botón tooltip (scroll to top)
+        document.getElementById('fabTooltip').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showNotification('Volviendo al inicio');
+        });
+
+        // Funcionalidad del botón expandible
+        const fabContainer = document.getElementById('fabContainer');
+        const fabMain = document.getElementById('fabMain');
+        const fabOptions = document.getElementById('fabOptions');
+        const fabIcon = document.getElementById('fabIcon');
+        let isExpanded = false;
+
+        fabMain.addEventListener('click', function() {
+            isExpanded = !isExpanded;
+            
+            if (isExpanded) {
+                fabContainer.classList.add('expanded');
+                fabIcon.className = 'fas fa-times';
+            } else {
+                fabContainer.classList.remove('expanded');
+                fabIcon.className = 'fas fa-bars';
+            }
+        });
+
+        // Funcionalidad de las opciones del FAB expandible
+        document.querySelectorAll('.fab-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const action = this.getAttribute('data-action');
+                let message = '';
+                
+                switch(action) {
+                    case 'share':
+                        message = 'Compartir contenido';
+                        break;
+                    case 'favorite':
+                        message = 'Agregar a favoritos';
+                        break;
+                    case 'message':
+                        message = 'Enviar mensaje';
+                        break;
+                    case 'call':
+                        message = 'Realizar llamada';
+                        break;
+                }
+                
+                showNotification(message);
+                
+                // Cerrar el menú después de seleccionar
+                setTimeout(() => {
+                    fabContainer.classList.remove('expanded');
+                    fabIcon.className = 'fas fa-bars';
+                    isExpanded = false;
+                }, 300);
+            });
+        });
+
+        // Funcionalidad de botones múltiples
+        document.querySelector('.fab-chat').addEventListener('click', function() {
+            showNotification('Iniciando chat en vivo');
+        });
+
+        document.querySelector('.fab-help').addEventListener('click', function() {
+            showNotification('Abriendo centro de ayuda');
+        });
+
+        // Función para mostrar notificaciones
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Función para ocultar notificación
+        function hideNotification() {
+            document.getElementById('notification').classList.remove('show');
+        }
+
+        // Cerrar FAB expandible al hacer click fuera
+        document.addEventListener('click', function(event) {
+            if (!fabContainer.contains(event.target) && isExpanded) {
+                fabContainer.classList.remove('expanded');
+                fabIcon.className = 'fas fa-bars';
+                isExpanded = false;
+            }
+        });
+    </script>
 </body>
 </html>
