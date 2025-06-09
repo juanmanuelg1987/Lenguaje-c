@@ -32,10 +32,18 @@
 
         h1 {
             text-align: center;
-            color: #4a5568;
+            color: #826196;
             margin-bottom: 30px;
             font-size: 2.5em;
         }
+
+          h2 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
 
         .content {
             margin-bottom: 30px;
@@ -168,7 +176,7 @@
     <div class="container">
         <h1>Botón Flotante con HTML y CSS</h1>
         <h2>German-Nadia-Denis-Juanmanuel</h2>
-        <p>German-Nadia-Denis-Juanmanuel</p>
+    
         
         <div class="content">
             <p>Este es un ejemplo práctico de cómo crear un <strong>botón flotante</strong> usando únicamente HTML y CSS. El botón permanece fijo en la pantalla sin importar el scroll.</p>
