@@ -1,63 +1,541 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Botón Flotante - Proyecto Educativo</title>
-  <link rel="stylesheet" href="estilos.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body>
-  <main class="contenido">
-    <h1>Proyecto: Botón Flotante (Floating Action Button)</h1>
-    <h2>Integrantes del grupo</h2>
-    <ul>
-      <li>German</li>
-      <li>Nadia</li>
-      <li>Denis</li>
-      <li>Juan</li>
-    </ul>
+/* styles.css - Estilos completos para botones flotantes */
 
-    <h2>¿Qué es un botón flotante?</h2>
-    <p>
-      Un <strong>botón flotante</strong> (en inglés <em>Floating Action Button</em>, <strong>FAB</strong>) es un botón circular que permanece superpuesto en la pantalla, comúnmente ubicado en la esquina inferior derecha. Se utiliza para ofrecer acciones rápidas como enviar mensajes, iniciar una llamada, o abrir opciones adicionales.
-    </p>
+/* ========================================
+   ESTILOS GENERALES Y RESET
+======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <h2>Componentes del botón flotante</h2>
-    <ul>
-      <li><strong>HTML:</strong> define la estructura del botón y los botones secundarios.</li>
-      <li><strong>CSS:</strong> da estilo, posiciona el FAB, y gestiona la animación del despliegue.</li>
-      <li><strong>Input Checkbox + Label:</strong> usamos este truco para controlar el estado abierto/cerrado del FAB sin JavaScript.</li>
-    </ul>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 200vh; /* Para permitir scroll y demostrar funcionalidad */
+}
 
-    <h3>Palabras clave (CSS)</h3>
-    <ul>
-      <li><strong>position: fixed</strong> → mantiene el botón visible aunque se haga scroll.</li>
-      <li><strong>z-index</strong> → asegura que esté por encima del contenido.</li>
-      <li><strong>:checked</strong> → se usa para detectar si el botón principal fue presionado.</li>
-      <li><strong>transition</strong> → permite animar la aparición de los botones secundarios.</li>
-      <li><strong>pointer-events</strong> → bloquea clics en botones ocultos.</li>
-      <li><strong>flex-direction: column</strong> → organiza los subbotones de forma vertical.</li>
-    </ul>
+/* ========================================
+   ESTILOS DEL CONTENIDO PRINCIPAL
+======================================== */
+header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
 
-    <p>Abajo podés probar el comportamiento del FAB desplazándote en la página:</p>
+header h1 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+}
 
-    <div class="scroll-largo">
-      <p>Contenido simulado... Desplazate para ver el botón flotante mantenerse fijo.</p>
-    </div>
-  </main>
+header p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+}
 
-  <!-- Botón flotante -->
-  <div class="fab-container">
-    <input type="checkbox" id="fab-toggle" class="fab-checkbox">
-    <label for="fab-toggle" class="fab-button">
-      <i class="fas fa-plus"></i>
-    </label>
-    <div class="fab-buttons">
-      <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="#" title="Correo"><i class="fas fa-envelope"></i></a>
-      <a href="#" title="Teléfono"><i class="fas fa-phone"></i></a>
-    </div>
-  </div>
-</body>
-</html>
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.info-section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.info-section h2 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.info-card {
+    background: rgba(247, 249, 252, 0.8);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #3498db;
+}
+
+.info-card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.info-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+.info-card li:last-child {
+    border-bottom: none;
+}
+
+.info-card strong {
+    color: #3498db;
+}
+
+.types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.type-item {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid rgba(52, 152, 219, 0.2);
+    transition: all 0.3s ease;
+}
+
+.type-item:hover {
+    border-color: #3498db;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+}
+
+.type-item h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.demo-content {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.content-block {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(247, 249, 252, 0.6);
+    border-radius: 10px;
+    border-left: 3px solid #e74c3c;
+}
+
+.content-block h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+/* ========================================
+   ESTILOS BASE PARA BOTONES FLOTANTES
+======================================== */
+.fab {
+    position: fixed;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    outline: none;
+}
+
+.fab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.fab:active {
+    transform: scale(0.95);
+}
+
+/* ========================================
+   BOTÓN FLOTANTE SIMPLE
+======================================== */
+.fab-simple {
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.fab-simple:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+/* ========================================
+   BOTÓN FLOTANTE CON TOOLTIP
+======================================== */
+.fab-tooltip {
+    bottom: 100px;
+    right: 30px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    position: relative;
+}
+
+.fab-tooltip .tooltip {
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.fab-tooltip .tooltip::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-left-color: rgba(0, 0, 0, 0.8);
+}
+
+.fab-tooltip:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ========================================
+   BOTÓN FLOTANTE EXPANDIBLE
+======================================== */
+.fab-container {
+    position: fixed;
+    bottom: 170px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.fab-main {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    position: relative;
+    z-index: 1001;
+}
+
+.fab-options {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fab-container.expanded .fab-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.fab-option {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #333;
+    transform: scale(0);
+    animation: fabOptionIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.fab-container.expanded .fab-option:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.fab-container.expanded .fab-option:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.fab-container.expanded .fab-option:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.fab-container.expanded .fab-option:nth-child(4) {
+    animation-delay: 0.25s;
+}
+
+@keyframes fabOptionIn {
+    to {
+        transform: scale(1);
+    }
+}
+
+/* ========================================
+   BOTONES FLOTANTES MÚLTIPLES
+======================================== */
+.fab-multiple {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.fab-chat {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    animation: pulse 2s infinite;
+}
+
+.fab-help {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    color: #333;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    50% {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 10px rgba(102, 126, 234, 0.2);
+    }
+    100% {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* ========================================
+   SISTEMA DE NOTIFICACIONES
+======================================== */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: -400px;
+    background: rgba(46, 204, 113, 0.95);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 2000;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    max-width: 350px;
+}
+
+.notification.show {
+    right: 20px;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+}
+
+.notification-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ========================================
+   DISEÑO RESPONSIVO
+======================================== */
+@media (max-width: 768px) {
+    /* Ajustar tamaño de FABs en móviles */
+    .fab {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+    }
+    
+    /* Reposicionar para evitar conflictos con UI móvil */
+    .fab-simple {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .fab-tooltip {
+        bottom: 80px;
+        right: 20px;
+    }
+    
+    .fab-container {
+        bottom: 140px;
+        right: 20px;
+    }
+    
+    .fab-multiple {
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    /* Ocultar tooltip en móviles para mejor UX */
+    .fab-tooltip .tooltip {
+        display: none;
+    }
+    
+    /* Ajustar contenido principal */
+    main {
+        padding: 1rem;
+    }
+    
+    header {
+        padding: 1.5rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .types-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .notification {
+        max-width: calc(100vw - 40px);
+        right: -100vw;
+    }
+    
+    .notification.show {
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* FABs más pequeños en pantallas muy pequeñas */
+    .fab {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+    
+    .fab-option {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    /* Espaciado reducido */
+    .fab-simple, .fab-tooltip, .fab-multiple {
+        bottom: 15px;
+    }
+    
+    .fab-simple, .fab-tooltip {
+        right: 15px;
+    }
+    
+    .fab-multiple {
+        left: 15px;
+    }
+    
+    .fab-container {
+        bottom: 100px;
+        right: 15px;
+    }
+}
+
+/* ========================================
+   ANIMACIONES ADICIONALES
+======================================== */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Aplicar animación de entrada a todos los FABs */
+.fab {
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Efecto de ondas al hacer click */
+.fab::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.fab:active::before {
+    width: 200px;
+    height: 200px;
+}
+
+/* ========================================
+   MODO OSCURO (OPCIONAL)
+======================================== */
+@media (prefers-color-scheme: dark) {
+    .info-section,
+    .demo-content {
+        background: rgba(30, 30, 30, 0.95);
+        color: #e0e0e0;
+    }
+    
+    .info-card,
+    .content-block {
+        background: rgba(40, 40, 40, 0.8);
+    }
+    
+    .info-section h2,
+    .info-card h3,
+    .content-block h3 {
+        color: #f0f0f0;
+    }
+    
+    .notification {
+        background: rgba(46, 204, 113, 0.9);
+    }
+}
