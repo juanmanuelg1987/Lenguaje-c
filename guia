@@ -1,0 +1,49 @@
+Lo que incluye la demo:
+Sección 1: Introducción
+
+Explicación básica del concepto
+Código fundamental de position: fixed
+
+Sección 2: Botón Básico
+
+Un solo botón rojo simple
+Explicación detallada de cada propiedad CSS
+Código paso a paso
+
+Sección 3: Efectos y Transiciones
+
+4 botones diferentes con efectos:
+
+Botón que crece (hover)
+Botón con animación de rebote
+Botón que cambia de forma
+
+
+Explicación de transition y @keyframes
+
+Sección 4: Efectos Avanzados
+
+6 botones con efectos profesionales:
+
+Animación de pulso
+Sombras con elevación
+
+
+Código de pseudo-elementos y animaciones complejas
+
+Para la clase:
+
+Progresivo: Cada sección añade complejidad
+Visual: Los estudiantes ven el resultado inmediatamente
+Interactivo: Pueden hacer hover y ver los efectos
+Código explicado: Cada propiedad tiene su explicación
+Responsive: Se adapta a diferentes pantallas
+
+📖 Cómo usar en la clase:
+
+Muestra la intro → Explica el concepto básico
+Sección por sección → Haz scroll y explica cada efecto
+Señala los botones → Los estudiantes pueden verlos en tiempo real
+Código y resultado → Conecta la teoría con la práctica
+
+¡Es perfecto para mantener la atención de los estudiantes! Combina teoría, código y ejemplos visuales que cambian dinámicamente. 🎉
