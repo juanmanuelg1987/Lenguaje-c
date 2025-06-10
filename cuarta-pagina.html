@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAB - Problema del Subrayado y Su Solución</title>
+    <style>
+        /* Reseteo básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        header p {
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Secciones principales */
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 {
+            color: #e74c3c;
+            margin: 20px 0 15px 0;
+            font-size: 20px;
+        }
+
+        .section h3.solution {
+            color: #27ae60;
+        }
+
+        /* Códigos CSS */
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border-left: 5px solid #3498db;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: "CSS";
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: #3498db;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .css-property { color: #e74c3c; }
+        .css-value { color: #f39c12; }
+        .css-comment { color: #95a5a6; }
+
+        /* Demostraciones lado a lado */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .demo-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .demo-box.error {
+            border-color: #e74c3c;
+            background: linear-gradient(135deg, #fff5f5, #fed7d7);
+        }
+
+        .demo-box.solution {
+            border-color: #27ae60;
+            background: linear-gradient(135deg, #f0fff4, #c6f6d5);
+        }
+
+        .demo-box h4 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .demo-box.error h4 {
+            color: #e74c3c;
+        }
+
+        .demo-box.solution h4 {
+            color: #27ae60;
+        }
+
+        /* FAB CON PROBLEMA (subrayado) */
+        .fab-with-problem {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #007bff;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
+            /* SIN text-decoration: none - AQUÍ ESTÁ EL PROBLEMA */
+            display: inline-block;
+            line-height: 70px;
+            text-align: center;
+        }
+
+        .fab-with-problem:hover {
+            transform: scale(1.1);
+            background: #0056b3;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+            /* SIN text-decoration: none en hover */
+        }
+
+        /* FAB SOLUCIONADO (sin subrayado) */
+        .fab-fixed {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #007bff;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
+            /* SOLUCIÓN: */
+            text-decoration: none;  /* ← Elimina el subrayado */
+            display: flex;          /* ← Ayuda a centrar el ícono */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fab-fixed:hover {
+            transform: scale(1.1);
+            background: #0056b3;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+            text-decoration: none;  /* Mantiene sin subrayado */
+            color: white;          /* Mantiene el color blanco */
+        }
+
+        .fab-fixed:visited {
+            color: white;          /* Color después de hacer clic */
+        }
+
+        /* Explicaciones con íconos */
+        .explanation {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #2196f3;
+        }
+
+        .problem-explanation {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+            border-left-color: #f44336;
+        }
+
+        .solution-explanation {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            border-left-color: #4caf50;
+        }
+
+        .explanation h4 {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .explanation ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .explanation li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .explanation li::before {
+            content: "•";
+            color: #2196f3;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .problem-explanation li::before {
+            content: "⚠️";
+        }
+
+        .solution-explanation li::before {
+            content: "✅";
+        }
+
+        /* Destacados */
+        .highlight {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #f39c12;
+            margin: 20px 0;
+        }
+
+        .highlight strong {
+            color: #d68910;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            header h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .fab-with-problem,
+            .fab-fixed {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+                line-height: 60px;
+            }
+        }
+
+        /* Animación de entrada */
+        .section {
+            animation: slideInUp 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🚀 FAB: Problema del Subrayado</h1>
+        <p>Demostración del error común y su solución</p>
+    </header>
+
+    <div class="container">
+        <!-- Sección 1: Introducción al problema -->
+        <div class="section">
+            <h2>🔍 El Problema</h2>
+            <p>Cuando usas un elemento <code>&lt;a&gt;</code> (enlace) para crear un FAB, el navegador automáticamente aplica estilos por defecto que incluyen subrayado del texto.</p>
+            
+            <div class="comparison">
+                <div class="demo-box error">
+                    <h4>❌ FAB con Problema</h4>
+                    <a href="#demo" class="fab-with-problem">⚡</a>
+                    <p style="margin-top: 15px; color: #e74c3c;"><strong>¡Nota el subrayado!</strong></p>
+                </div>
+                
+                <div class="demo-box solution">
+                    <h4>✅ FAB Solucionado</h4>
+                    <a href="#demo" class="fab-fixed">⚡</a>
+                    <p style="margin-top: 15px; color: #27ae60;"><strong>Sin subrayado</strong></p>
+                </div>
+            </div>
+
+            <div class="problem-explanation explanation">
+                <h4>⚠️ ¿Por qué pasa esto?</h4>
+                <ul>
+                    <li>Los elementos <code>&lt;a&gt;</code> tienen estilos por defecto del navegador</li>
+                    <li>Incluyen <code>text-decoration: underline</code> automáticamente</li>
+                    <li>El color también puede cambiar en estados :hover y :visited</li>
+                    <li>Estos estilos se aplican aunque el enlace tenga forma de botón</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sección 2: Código del problema -->
+        <div class="section">
+            <h2>📝 Código con Problema</h2>
+            <p>Este es el código que causa el subrayado:</p>
+            
+            <div class="code-block">
+&lt;a href="segunda-pagina.html" class="fab-fixed"&gt;
+  ⚡
+&lt;/a&gt;
+
+&lt;style&gt;
+.fab-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #007bff;
+  color: white;
+  font-size: 24px;
+  <span class="css-comment">/* ❌ FALTA: text-decoration: none; */</span>
+}
+
+.fab-fixed:hover {
+  transform: scale(1.1);
+  background: #0056b3;
+  <span class="css-comment">/* ❌ FALTA: text-decoration: none; */</span>
+  <span class="css-comment">/* ❌ FALTA: color: white; */</span>
+}
+&lt;/style&gt;</div>
+
+            <div class="highlight">
+                <strong>Resultado:</strong> El ícono ⚡ aparece subrayado porque el navegador aplica sus estilos por defecto a todos los elementos <code>&lt;a&gt;</code>.
+            </div>
+        </div>
+
+        <!-- Sección 3: La solución -->
+        <div class="section">
+            <h2>🛠️ La Solución</h2>
+            <p>Para eliminar el subrayado, necesitas agregar estas propiedades CSS específicas:</p>
+            
+            <div class="code-block">
+.fab-fixed {
+  <span class="css-comment">/* ... tus estilos existentes ... */</span>
+  <span class="css-property">text-decoration</span>: <span class="css-value">none</span>;  <span class="css-comment">/* ← Elimina el subrayado */</span>
+  <span class="css-property">display</span>: <span class="css-value">flex</span>;          <span class="css-comment">/* ← Ayuda a centrar el ícono */</span>
+  <span class="css-property">align-items</span>: <span class="css-value">center</span>;
+  <span class="css-property">justify-content</span>: <span class="css-value">center</span>;
+}
+
+.fab-fixed:hover {
+  <span class="css-comment">/* ... tus estilos existentes ... */</span>
+  <span class="css-property">text-decoration</span>: <span class="css-value">none</span>;  <span class="css-comment">/* Mantiene sin subrayado */</span>
+  <span class="css-property">color</span>: <span class="css-value">white</span>;          <span class="css-comment">/* Mantiene el color blanco */</span>
+}
+
+.fab-fixed:visited {
+  <span class="css-property">color</span>: <span class="css-value">white</span>;          <span class="css-comment">/* Color después de hacer clic */</span>
+}</div>
+
+            <div class="solution-explanation explanation">
+                <h4>✅ Explicación de cada propiedad:</h4>
+                <ul>
+                    <li><strong>text-decoration: none;</strong> - Elimina completamente el subrayado</li>
+                    <li><strong>display: flex;</strong> - Cambia el comportamiento de disposición del elemento</li>
+                    <li><strong>align-items: center;</strong> - Centra verticalmente el contenido</li>
+                    <li><strong>justify-content: center;</strong> - Centra horizontalmente el contenido</li>
+                    <li><strong>color: white en :hover;</strong> - Mantiene el color blanco al pasar el mouse</li>
+                    <li><strong>color: white en :visited;</strong> - Mantiene el color después de hacer clic</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sección 4: Código completo corregido -->
+        <div class="section">
+            <h2>✅ Código Completo Corregido</h2>
+            <p>Aquí tienes tu código original completamente corregido:</p>
+            
+            <div class="code-block">
+&lt;!-- HTML --&gt;
+&lt;a href="segunda-pagina.html" class="fab-fixed" title="¡FAB Fijo Real!"&gt;
+  ⚡
+&lt;/a&gt;
+
+&lt;!-- CSS --&gt;
+&lt;style&gt;
+.fab-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-size: 24px;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  
+  <span class="css-comment">/* 🔧 CORRECCIONES AGREGADAS: */</span>
+  <span class="css-property">text-decoration</span>: <span class="css-value">none</span>;
+  <span class="css-property">display</span>: <span class="css-value">flex</span>;
+  <span class="css-property">align-items</span>: <span class="css-value">center</span>;
+  <span class="css-property">justify-content</span>: <span class="css-value">center</span>;
+}
+
+.fab-fixed:hover {
+  transform: scale(1.1);
+  background: #0056b3;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  
+  <span class="css-comment">/* 🔧 CORRECCIONES AGREGADAS: */</span>
+  <span class="css-property">color</span>: <span class="css-value">white</span>;
+  <span class="css-property">text-decoration</span>: <span class="css-value">none</span>;
+}
+
+.fab-fixed:visited {
+  <span class="css-comment">/* 🔧 ESTADO AGREGADO: */</span>
+  <span class="css-property">color</span>: <span class="css-value">white</span>;
+}
+&lt;/style&gt;</div>
+
+            <div class="highlight">
+                <strong>¡Listo!</strong> Ahora tu FAB funcionará perfectamente como enlace sin mostrar el subrayado molesto.
+            </div>
+        </div>
+    </div>
+
+    <!-- FAB funcional de demostración -->
+    <a href="#top" class="fab-fixed" title="¡FAB corregido funcionando!" style="position: fixed; bottom: 30px; right: 30px;">
+        🚀
+    </a>
+</body>
+</html>
