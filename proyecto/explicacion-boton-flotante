@@ -1,0 +1,65 @@
+Botones Flotantes (Floating Action Buttons - FAB)
+Demostración interactiva de diferentes tipos de botones flotantes
+
+¿Qué es un Botón Flotante?
+Definición
+Un botón flotante es un elemento de interfaz de usuario que permanece visible y accesible mientras el usuario navega por una página web o aplicación. Se caracteriza por:
+
+Posición fija: Permanece en la misma ubicación sin importar el scroll
+Alta visibilidad: Diseñado para destacar sobre el contenido
+Acción primaria: Representa la acción más importante de la página
+Fácil acceso: Siempre disponible para el usuario
+Funciones Principales
+Crear contenido: Agregar nuevos elementos (posts, comentarios, archivos)
+Navegación rápida: Ir al inicio, menú principal, o página anterior
+Comunicación: Enviar mensajes, llamadas, emails
+Acciones frecuentes: Compartir, favoritos, configuraciones
+Ayuda y soporte: Chat en vivo, FAQ, contacto
+Tipos de Botones Flotantes
+FAB Simple
+Un solo botón con una acción específica
+
+FAB Expandible
+Se expande para mostrar múltiples opciones
+
+FAB Múltiple
+Varios botones flotantes independientes
+
+FAB con Tooltip
+Incluye texto explicativo al hacer hover
+
+Contenido de Ejemplo
+Este contenido es extenso para demostrar cómo los botones flotantes permanecen visibles durante el scroll.
+
+Ventajas de los Botones Flotantes
+Los botones flotantes ofrecen múltiples beneficios en el diseño de interfaces:
+
+Accesibilidad: Siempre están disponibles, sin necesidad de buscar en menús o barras de herramientas.
+
+Consistencia: Mantienen la misma posición en toda la aplicación, creando una experiencia predecible.
+
+Eficiencia: Reducen el número de clics necesarios para realizar acciones importantes.
+
+Mejores Prácticas
+Posicionamiento: Ubicar en esquinas que no interfieran con el contenido principal.
+
+Tamaño: Suficientemente grande para ser fácil de tocar (mínimo 44px en móviles).
+
+Color: Usar colores que contrasten con el fondo pero mantengan la armonía visual.
+
+Animaciones: Incluir transiciones suaves para mejorar la experiencia del usuario.
+
+Casos de Uso Comunes
+Redes Sociales: Crear nuevo post, compartir contenido.
+
+E-commerce: Agregar al carrito, ver carrito de compras.
+
+Aplicaciones de Productividad: Crear nueva tarea, nota o proyecto.
+
+Sitios Web Corporativos: Contactar soporte, solicitar información.
+
+Consideraciones de Diseño
+Al implementar botones flotantes, es importante considerar el contexto y las necesidades específicas de los usuarios. El botón debe representar la acción más importante y frecuente de la página.
+
+Compatibilidad y Responsive Design
+Los botones flotantes deben adaptarse a diferentes tamaños de pantalla y dispositivos, manteniendo su funcionalidad y accesibilidad en todos los contextos
