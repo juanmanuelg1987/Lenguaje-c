@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ejemplo Botón Flotante (FAB) Completo</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body>
+  <main class="contenido">
+    <h1>Proyecto: Botón Flotante (Floating Action Button)</h1>
+    <h2>German-Nadia-Denis-Juan</h2>
+    <p>Ejemplo con menú desplegable y botones de acción rápida.</p>
+  </main>
+
+  <!-- Contenedor del botón flotante -->
+  <div class="fab-container">
+    <!-- Checkbox oculto para controlar menú -->
+    <input type="checkbox" id="fab-toggle" class="fab-checkbox" hidden />
+
+    <!-- Botón principal que controla menú -->
+    <label for="fab-toggle" class="fab-button" title="Abrir menú">
+      <i class="fas fa-plus"></i>
+    </label>
+
+    <!-- Botones secundarios del menú -->
+    <div class="fab-buttons">
+      <a href="https://wa.me/5491169261388" title="WhatsApp" target="_blank"
+        ><i class="fab fa-whatsapp"></i
+      ></a>
+      <a href="mailto:contacto@gmail.com" title="Correo electrónico"
+        ><i class="fas fa-envelope"></i
+      ></a>
+      
+    </div>
+  </div>
+</body>
+</html>

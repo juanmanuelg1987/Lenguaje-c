@@ -1,0 +1,93 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+main.contenido {
+  padding: 2rem;
+}
+
+.scroll-largo {
+  height: 1500px; /* Simula una página larga */
+  background: #f9f9f9;
+  padding: 2rem;
+}
+
+/* FAB - Botón flotante */
+.fab-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+/* Ocultar checkbox */
+.fab-checkbox {
+  display: none;
+}
+
+/* Botón principal */
+.fab-button {
+  background-color: #6200ea;
+  color: white;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+/* Animación al pasar el mouse */
+.fab-button:hover {
+  transform: scale(1.1);
+}
+
+/* Botones secundarios */
+.fab-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fab-buttons a {
+  background-color: #03dac5;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6px 0;
+  text-decoration: none;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.fab-buttons a:hover {
+  background-color: #018786;
+  transform: scale(1.1);
+}
+
+/* Mostrar los botones cuando el checkbox está activado */
+.fab-checkbox:checked ~ .fab-buttons {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(-10px);
+}
