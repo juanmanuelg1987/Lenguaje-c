@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAB Mejorado - Sin Subrayado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2d3436;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .demo-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .code-block {
+            background: #2d3436;
+            color: #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .css-property { color: #81ecec; }
+        .css-value { color: #fdcb6e; }
+
+        /* ===== SOLUCIONES PARA EL FAB ===== */
+
+        /* Solución 1: FAB como enlace sin subrayado */
+        .fab-link {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #007bff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none; /* Elimina el subrayado */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .fab-link:hover {
+            transform: scale(1.1);
+            background: #0056b3;
+            color: white; /* Mantiene el color blanco */
+            text-decoration: none; /* Asegura que no aparezca subrayado */
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .fab-link:visited {
+            color: white; /* Mantiene el color después de visitar */
+        }
+
+        .fab-link:focus {
+            outline: 2px solid #ffc107;
+            outline-offset: 2px;
+            text-decoration: none;
+        }
+
+        /* Solución 2: FAB con JavaScript (recomendado) */
+        .fab-button {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #28a745;
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .fab-button:hover {
+            transform: scale(1.1);
+            background: #218838;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .fab-button:focus {
+            outline: 2px solid #ffc107;
+            outline-offset: 2px;
+        }
+
+        /* Solución 3: FAB con animación mejorada */
+        .fab-enhanced {
+            position: fixed;
+            bottom: 170px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #e83e8c, #fd7e14);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .fab-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #fd7e14, #e83e8c);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .fab-enhanced:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(232, 62, 140, 0.4);
+            text-decoration: none;
+        }
+
+        .fab-enhanced:hover::before {
+            opacity: 1;
+        }
+
+        .fab-enhanced span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .fab-enhanced:visited {
+            color: white;
+        }
+
+        /* Demostración local */
+        .fab-demo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #6f42c1;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .fab-demo:hover {
+            transform: scale(1.1);
+            background: #5a32a3;
+            color: white;
+            text-decoration: none;
+        }
+
+        .fab-demo:visited {
+            color: white;
+        }
+
+        .explanation {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #2196f3;
+        }
+
+        .tip {
+            background: #f3e5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #9c27b0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 FAB Mejorado - Sin Subrayado</h1>
+        
+        <div class="demo-section">
+            <h2>🔧 Problema Original</h2>
+            <p>Cuando usas un elemento <code>&lt;a&gt;</code> para crear un enlace, el navegador automáticamente aplica:</p>
+            <div class="code-block">/* Estilos por defecto del navegador */
+a {
+  <span class="css-property">text-decoration</span>: <span class="css-value">underline</span>;
+  <span class="css-property">color</span>: <span class="css-value">blue</span>;
+}</div>
+        </div>
+
+        <div class="demo-section">
+            <h2>✅ Solución 1: Eliminar decoración del texto</h2>
+            <p>La solución más simple es agregar <code>text-decoration: none</code>:</p>
+            <div class="code-block">.fab-link {
+  <span class="css-property">text-decoration</span>: <span class="css-value">none</span>; /* Elimina el subrayado */
+  <span class="css-property">color</span>: <span class="css-value">white</span>;
+}
+
+.fab-link:hover {
+  <span class="css-property">text-decoration</span>: <span class="css-value">none</span>; /* Mantiene sin subrayado */
+  <span class="css-property">color</span>: <span class="css-value">white</span>; /* Mantiene el color */
+}
+
+.fab-link:visited {
+  <span class="css-property">color</span>: <span class="css-value">white</span>; /* Color después de visitar */
+}</div>
+            
+            <div class="explanation">
+                <strong>Demostración:</strong>
+                <a href="#demo1" class="fab-demo">⚡</a>
+                <p>Este botón es un enlace pero no tiene subrayado.</p>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🎯 Solución 2: Usar botón con JavaScript (Recomendado)</h2>
+            <p>Para mejor semántica HTML, usa un botón y maneja la navegación con JavaScript:</p>
+            <div class="code-block">&lt;button class="fab-button" onclick="window.location.href='segunda-pagina.html'"&gt;
+  🚀
+&lt;/button&gt;</div>
+            
+            <div class="explanation">
+                <strong>Ventajas:</strong>
+                <ul>
+                    <li>Mejor accesibilidad</li>
+                    <li>No hay problemas de subrayado</li>
+                    <li>Más control sobre la navegación</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>💎 Tu Código Corregido</h2>
+            <p>Así debería quedar tu FAB original:</p>
+            <div class="code-block">&lt;a href="segunda-pagina.html" class="fab-fixed" title="¡FAB Fijo Real!"&gt;
+  ⚡
+&lt;/a&gt;
+
+&lt;style&gt;
+.fab-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-size: 24px;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  <span class="css-property">text-decoration</span>: <span class="css-value">none</span>; /* ← ESTO FALTABA */
+  <span class="css-property">display</span>: <span class="css-value">flex</span>;
+  <span class="css-property">align-items</span>: <span class="css-value">center</span>;
+  <span class="css-property">justify-content</span>: <span class="css-value">center</span>;
+}
+
+.fab-fixed:hover {
+  transform: scale(1.1);
+  background: #0056b3;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  <span class="css-property">color</span>: <span class="css-value">white</span>; /* Mantiene el color */
+  <span class="css-property">text-decoration</span>: <span class="css-value">none</span>; /* Sin subrayado */
+}
+
+.fab-fixed:visited {
+  <span class="css-property">color</span>: <span class="css-value">white</span>; /* Color después de visitar */
+}
+&lt;/style&gt;</div>
+        </div>
+
+        <div class="tip">
+            <h3>💡 Consejos Adicionales:</h3>
+            <ul>
+                <li><strong>display: flex + align-items + justify-content</strong> - Centra perfectamente el ícono</li>
+                <li><strong>:visited</strong> - Mantiene el estilo después de hacer clic</li>
+                <li><strong>outline en :focus</strong> - Mejor accesibilidad para navegación por teclado</li>
+                <li><strong>z-index: 1000</strong> - Asegura que esté por encima de otros elementos</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FAB fijo con enlace - Solución 1 -->
+    <a href="tercer-pagina.html" class="fab-link" title="FAB como enlace">
+        ⚡
+    </a>
+
+    <!-- FAB fijo con botón - Solución 2 -->
+    <button class="fab-button" onclick="alert('¡Navegando con JavaScript!')" title="FAB como botón">
+        🚀
+    </button>
+
+    <!-- FAB fijo mejorado - Solución 3 -->
+    <a href="#pagina3" class="fab-enhanced" title="FAB mejorado">
+        <span>✨</span>
+    </a>
+
+    <script>
+        // JavaScript para el botón (opcional)
+        document.querySelector('.fab-button').addEventListener('click', function() {
+            // window.location.href = 'segunda-pagina.html';
+            console.log('¡Navegando a segunda página!');
+        });
+    </script>
+</body>
+</html>

@@ -423,11 +423,35 @@
             z-index: 1000;
         }
 
-        .fab-fixed:hover {
-            transform: scale(1.1);
-            background: #0056b3;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
+
+
+
+
+
+
+        
+        .fab-fixed {
+    /* ... tus estilos existentes ... */
+    text-decoration: none;  /* ← ESTO elimina el subrayado */
+    display: flex;          /* ← ESTO ayuda a centrar el ícono */
+    align-items: center;
+    justify-content: center;
+}
+
+.fab-fixed:hover {
+    /* ... tus estilos existentes ... */
+    text-decoration: none;  /* Mantiene sin subrayado */
+    color: white;          /* Mantiene el color blanco */
+}
+
+.fab-fixed:visited {
+    color: white;          /* Color después de hacer clic */
+}
+
+
+
+
+
 
         /* Sección de demostración */
         .demo-section {
