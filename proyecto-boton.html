@@ -4,39 +4,87 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ejemplo Botón Flotante (FAB) Completo</title>
-  <link rel="stylesheet" href="estilos.css" />
+
+  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
   />
+
+  <style>
+    body {
+      background-image: url('https://www.miituzaingo.gov.ar/sites/default/files/2023-03/IMG-20230329-WA0042.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      min-height: 100vh;
+    }
+
+    h1, h2, p {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 600px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      cursor: pointer;
+      z-index: 1000;
+      animation: bounce 2s infinite;
+      text-decoration: none;
+    }
+
+    .whatsapp-fab:hover {
+      background-color: #1ebe5d;
+    }
+
+    .whatsapp-fab img {
+      width: 30px;
+      height: 30px;
+    }
+  </style>
 </head>
 <body>
-  <main class="contenido">
-    <h1>Proyecto: Botón Flotante (Floating Action Button)</h1>
-    <h2>German-Nadia-Denis-Juan</h2>
+  <main>
+    <h1>Proyecto: Botón Flotante (FAB) Completo</h1>
+    <h2>German - Nadia - Denis - Juan</h2>
     <p>Ejemplo con menú desplegable y botones de acción rápida.</p>
   </main>
 
-  <!-- Contenedor del botón flotante -->
-  <div class="fab-container">
-    <!-- Checkbox oculto para controlar menú -->
-    <input type="checkbox" id="fab-toggle" class="fab-checkbox" hidden />
+  <!-- Botón flotante de WhatsApp con imagen animada -->
+  <a href="https://wa.me/5491169261388" title="WhatsApp" target="_blank" class="whatsapp-fab">
+    <!-- Usa solo uno: el ícono FontAwesome o la imagen -->
+    <!-- Opción 1: Ícono -->
+    <!-- <i class="fab fa-whatsapp"></i> -->
 
-    <!-- Botón principal que controla menú -->
-    <label for="fab-toggle" class="fab-button" title="Abrir menú">
-      <i class="fas fa-plus"></i>
-    </label>
-
-    <!-- Botones secundarios del menú -->
-    <div class="fab-buttons">
-      <a href="https://wa.me/5491169261388" title="WhatsApp" target="_blank"
-        ><i class="fab fa-whatsapp"></i
-      ></a>
-      <a href="mailto:contacto@gmail.com" title="Correo electrónico"
-        ><i class="fas fa-envelope"></i
-      ></a>
-      
-    </div>
-  </div>
+    <!-- Opción 2: Imagen -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+  </a>
 </body>
 </html>

@@ -1,0 +1,26 @@
+body {
+    background-image: url('https://www.miituzaingo.gov.ar/sites/default/files/2023-03/IMG-20230329-WA0042.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    min-height: 100vh;
+}
+
+/* Aquí van el resto de tus estilos */
+.contenido {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    margin: 20px auto;
+    max-width: 800px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ... resto de estilos del botón flotante ... */
