@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organización CSS - Guía Completa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2d3748;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .folder-structure {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin: 1.5rem 0;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .folder-structure::before {
+            content: '📁 Estructura de Carpetas';
+            position: absolute;
+            top: -15px;
+            left: 15px;
+            background: #2d3748;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            color: #a0aec0;
+        }
+
+        .code-block {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: '💻 Código';
+            position: absolute;
+            top: -15px;
+            left: 15px;
+            background: #2d3748;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            color: #a0aec0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border: 1px solid #38b2ac;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .info-box::before {
+            content: '💡';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #38b2ac;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fef5e7 0%, #fed7aa 100%);
+            border: 1px solid #f6ad55;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .warning-box::before {
+            content: '⚠️';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #f6ad55;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-item {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .checklist {
+            background: #f0fff4;
+            border: 1px solid #68d391;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .checklist h4 {
+            color: #22543d;
+            margin-bottom: 1rem;
+        }
+
+        .checklist ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            padding: 0.5rem 0;
+            color: #2f855a;
+        }
+
+        .checklist li::before {
+            content: '✅ ';
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .step-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>📁 Organización CSS</h1>
+            <p>Guía paso a paso para separar y organizar tus estilos CSS en carpetas profesionales</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">🎯 Estructura Recomendada</h2>
+            
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Crear la Estructura de Carpetas</h3>
+                </div>
+                <p>Primero, organiza tu proyecto con esta estructura profesional:</p>
+                <div class="folder-structure">
+mi-proyecto/
+├── index.html
+├── about.html
+├── services.html
+├── contact.html
+├── portfolio.html
+├── css/
+│   ├── main.css           ← Estilos generales y reset
+│   ├── layout.css         ← Header, footer, navegación
+│   ├── components.css     ← Botones, cards, formularios
+│   ├── pages/
+│   │   ├── home.css       ← Estilos específicos de inicio
+│   │   ├── about.css      ← Estilos de página "acerca"
+│   │   ├── services.css   ← Estilos de servicios
+│   │   ├── contact.css    ← Estilos de contacto
+│   │   └── portfolio.css  ← Estilos de portfolio
+│   └── utilities.css      ← Clases utilitarias
+├── js/
+│   └── main.js
+└── images/
+    └── (tus imágenes)
+                </div>
+                
+                <div class="info-box">
+                    <strong>¿Por qué esta estructura?</strong><br>
+                    • <strong>css/main.css</strong>: Reset CSS y estilos base<br>
+                    • <strong>css/layout.css</strong>: Elementos comunes (header, footer)<br>
+                    • <strong>css/components.css</strong>: Componentes reutilizables<br>
+                    • <strong>css/pages/</strong>: Estilos específicos de cada página<br>
+                    • <strong>css/utilities.css</strong>: Clases de utilidad (.text-center, .mb-4, etc.)
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Extraer Estilos Comunes</h3>
+                </div>
+                <p>Crea <strong>css/main.css</strong> con los estilos que se repiten en todas las páginas:</p>
+                <div class="code-block">
+/* css/main.css - Estilos base y reset */
+
+/* RESET CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ESTILOS BASE */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f8f9fa;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #2d3748;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #667eea;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #764ba2;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+}
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Crear Estilos de Layout</h3>
+                </div>
+                <p>Crea <strong>css/layout.css</strong> para header, footer y navegación:</p>
+                <div class="code-block">
+/* css/layout.css - Header, Footer, Navegación */
+
+/* HEADER */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* FOOTER */
+.footer {
+    background: #2d3748;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+/* NAVEGACIÓN POR PUNTOS */
+.nav-dots {
+    position: fixed;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.nav-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.nav-dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.3);
+}
+
+.nav-dot.active {
+    background: white;
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Crear Componentes Reutilizables</h3>
+                </div>
+                <p>Crea <strong>css/components.css</strong> para botones, cards, etc.:</p>
+                <div class="code-block">
+/* css/components.css - Componentes reutilizables */
+
+/* BOTONES */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-secondary:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* CARDS */
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* FORMULARIOS */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* SECCIONES */
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <h3 class="step-title">Estilos Específicos por Página</h3>
+                </div>
+                <p>Crea archivos individuales para cada página en <strong>css/pages/</strong>:</p>
+                
+                <div class="code-block">
+/* css/pages/home.css - Estilos específicos de la página inicio */
+
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 4rem 0;
+}
+                </div>
+
+                <div class="code-block">
+/* css/pages/about.css - Estilos específicos de la página acerca */
+
+.about-header {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    padding: 6rem 0 4rem;
+    text-align: center;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.team-member {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">6</div>
+                    <h3 class="step-title">Vincular CSS en HTML</h3>
+                </div>
+                <p>Así debes vincular los archivos CSS en cada página HTML:</p>
+                <div class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mi Sitio Web&lt;/title&gt;
+    
+    &lt;!-- CSS EN ORDEN ESPECÍFICO --&gt;
+    &lt;link rel="stylesheet" href="css/main.css"&gt;         &lt;!-- Primero: estilos base --&gt;
+    &lt;link rel="stylesheet" href="css/layout.css"&gt;       &lt;!-- Segundo: layout --&gt;
+    &lt;link rel="stylesheet" href="css/components.css"&gt;   &lt;!-- Tercero: componentes --&gt;
+    &lt;link rel="stylesheet" href="css/pages/home.css"&gt;   &lt;!-- Último: página específica --&gt;
+    &lt;link rel="stylesheet" href="css/utilities.css"&gt;    &lt;!-- Opcional: utilidades --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Contenido de la página --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                </div>
+                
+                <div class="warning-box">
+                    <strong>⚠️ Orden importante:</strong><br>
+                    El orden de los archivos CSS importa. Los estilos se aplican en orden, por lo que:<br>
+                    1. <strong>main.css</strong> - Base y reset<br>
+                    2. <strong>layout.css</strong> - Estructura general<br>
+                    3. <strong>components.css</strong> - Componentes<br>
+                    4. <strong>pages/xxx.css</strong> - Específico de página<br>
+                    5. <strong>utilities.css</strong> - Sobrescribe todo
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">7</div>
+                    <h3 class="step-title">Crear Archivo de Utilidades</h3>
+                </div>
+                <p>Crea <strong>css/utilities.css</strong> para clases útiles:</p>
+                <div class="code-block">
+/* css/utilities.css - Clases de utilidad */
+
+/* ESPACIADO */
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 1.5rem; }
+.p-4 { padding: 2rem; }
+
+/* TEXTO */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-bold { font-weight: 700; }
+.text-normal { font-weight: 400; }
+
+/* DISPLAY */
+.d-none { display: none; }
+.d-block { display: block; }
+.d-flex { display: flex; }
+.d-grid { display: grid; }
+
+/* FLEX */
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.align-center { align-items: center; }
+
+/* RESPONSIVE UTILITIES */
+@media (max-width: 768px) {
+    .mobile-hidden { display: none; }
+    .mobile-center { text-align: center; }
+}
+                </div>
+            </div>
+
+            <h2 class="section-title">✨ Beneficios de esta Organización</h2>
+            
+            <div class="benefit-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">🚀</div>
+                    <h4>Mejor Rendimiento</h4>
+                    <p>Carga solo los estilos necesarios para cada página</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🔧</div>
+                    <h4>Fácil Mantenimiento</h4>
+                    <p>Cambios centralizados sin afectar otras páginas</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">👥</div>
+                    <h4>Trabajo en Equipo</h4>
+                    <p>Varios desarrolladores pueden trabajar sin conflictos</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">📱</div>
+                    <h4>Escalabilidad</h4>
+                    <p>Fácil agregar nuevas páginas y componentes</p>
+                </div>
+            </div>
+
+            <div class="checklist">
+                <h4>📋 Checklist de Implementación</h4>
+                <ul>
+                    <li>Crear estructura de carpetas css/</li>
+                    <li>Mover estilos comunes a main.css</li>
+                    <li>Extraer header/footer a layout.css</li>
+                    <li>Crear componentes reutilizables</li>
+                    <li>Separar estilos por página</li>
+                    <li>Actualizar todos los archivos HTML</li>
+                    <li>Probar que todo funcione correctamente</li>
+                    <li>Eliminar estilos duplicados</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">💡</div>
+                    <h3 class="step-title">Tips Adicionales</h3>
+                </div>
+                
+                <div class="info-box">
+                    <strong>🎨 Consejos profesionales:</strong><br>
+                    • Usa nombres descriptivos para tus archivos CSS<br>
+                    • Comenta secciones importantes en tu código<br>
+                    • Mantén consistencia en nomenclatura de clases<br>
+                    • Usa variables CSS para colores y medidas<br>
+                    • Minifica los archivos CSS para producción<br>
+                    • Considera usar un preprocesador como SASS
+                </div>
+                
+                <div class="warning-box">
+                    <strong>❌ Errores comunes:</strong><br>
+                    • No respetar el orden de importación<br>
+                    • Duplicar estilos en múltiples archivos<br>
+                    • No usar rutas relativas correctas<br>
+                    • Mezclar estilos específicos con generales<br>
+                    • No probar en diferentes navegadores
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

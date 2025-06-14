@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navegación por Puntos - Guía Completa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        /* ESTILOS PARA LA NAVEGACIÓN POR PUNTOS */
+        .nav-dots {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 2px solid white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-dot:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.2);
+        }
+
+        .nav-dot.active {
+            background-color: white;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Tooltip para mostrar el nombre de la página */
+        .nav-dot::before {
+            content: attr(data-page);
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Secciones de ejemplo */
+        .section {
+            min-height: 400px;
+            padding: 40px;
+            margin: 20px 0;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .step {
+            background: #f7fafc;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning {
+            background: #fed7d7;
+            border: 1px solid #fc8181;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-dots {
+                right: 15px;
+                gap: 10px;
+            }
+            
+            .nav-dot {
+                width: 10px;
+                height: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVEGACIÓN POR PUNTOS -->
+    <div class="nav-dots">
+        <div class="nav-dot active" data-page="Inicio" onclick="goToPage('index.html')"></div>
+        <div class="nav-dot" data-page="Acerca" onclick="goToPage('about.html')"></div>
+        <div class="nav-dot" data-page="Servicios" onclick="goToPage('services.html')"></div>
+        <div class="nav-dot" data-page="Contacto" onclick="goToPage('contact.html')"></div>
+    </div>
+
+    <div class="container">
+        <h1>🎯 Sistema de Navegación por Puntos</h1>
+        <p>Guía completa para implementar navegación por puntos en tu sitio web</p>
+
+        <div class="section">
+            <h2>1. HTML Base</h2>
+            <p>Este es el código HTML que debes agregar a cada página:</p>
+            <div class="code-example">
+&lt;!-- NAVEGACIÓN POR PUNTOS --&gt;
+&lt;div class="nav-dots"&gt;
+    &lt;div class="nav-dot active" data-page="Inicio" onclick="goToPage('index.html')"&gt;&lt;/div&gt;
+    &lt;div class="nav-dot" data-page="Acerca" onclick="goToPage('about.html')"&gt;&lt;/div&gt;
+    &lt;div class="nav-dot" data-page="Servicios" onclick="goToPage('services.html')"&gt;&lt;/div&gt;
+    &lt;div class="nav-dot" data-page="Contacto" onclick="goToPage('contact.html')"&gt;&lt;/div&gt;
+&lt;/div&gt;
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2. CSS Requerido</h2>
+            <p>Agrega estos estilos en tu archivo CSS o en la sección &lt;style&gt;:</p>
+            <div class="code-example">
+/* NAVEGACIÓN POR PUNTOS */
+.nav-dots {
+    position: fixed;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+.nav-dot.active {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Tooltip opcional */
+.nav-dot::before {
+    content: attr(data-page);
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.nav-dot:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>3. JavaScript para Navegación</h2>
+            <p>Agrega esta función JavaScript para manejar la navegación:</p>
+            <div class="code-example">
+&lt;script&gt;
+function goToPage(page) {
+    window.location.href = page;
+}
+
+// Función para marcar la página actual como activa
+function setActivePage(pageIndex) {
+    const dots = document.querySelectorAll('.nav-dot');
+    dots.forEach((dot, index) => {
+        dot.classList.remove('active');
+        if (index === pageIndex) {
+            dot.classList.add('active');
+        }
+    });
+}
+
+// Llamar esta función en cada página con su índice correspondiente
+// setActivePage(0); // Para index.html
+// setActivePage(1); // Para about.html
+// setActivePage(2); // Para services.html
+// setActivePage(3); // Para contact.html
+&lt;/script&gt;
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>4. Pasos de Implementación</h2>
+            
+            <div class="step">
+                <strong>Paso 1:</strong> Crea la estructura HTML de navegación en cada página, ajustando los nombres de archivo según corresponda.
+            </div>
+            
+            <div class="step">
+                <strong>Paso 2:</strong> Agrega los estilos CSS a tu archivo de estilos principal o dentro de etiquetas &lt;style&gt; en cada página.
+            </div>
+            
+            <div class="step">
+                <strong>Paso 3:</strong> Incluye el JavaScript en cada página.
+            </div>
+            
+            <div class="step">
+                <strong>Paso 4:</strong> En cada página, llama a setActivePage() con el índice correspondiente:
+                <ul>
+                    <li>index.html → setActivePage(0)</li>
+                    <li>about.html → setActivePage(1)</li>
+                    <li>services.html → setActivePage(2)</li>
+                    <li>contact.html → setActivePage(3)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>5. Personalización</h2>
+            <div class="warning">
+                <strong>💡 Tips de Personalización:</strong>
+                <ul>
+                    <li><strong>Colores:</strong> Cambia background-color y border para ajustar los colores</li>
+                    <li><strong>Tamaño:</strong> Modifica width y height para puntos más grandes/pequeños</li>
+                    <li><strong>Posición:</strong> Cambia right por left para ponerlos al lado izquierdo</li>
+                    <li><strong>Animaciones:</strong> Ajusta transition para efectos más rápidos/lentos</li>
+                    <li><strong>Responsive:</strong> Usa media queries para adaptar a móviles</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>6. Ejemplo Completo</h2>
+            <p>Así se vería en tu archivo index.html:</p>
+            <div class="code-example">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mi Sitio Web&lt;/title&gt;
+    &lt;style&gt;
+        /* Aquí van todos los estilos CSS de arriba */
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- NAVEGACIÓN POR PUNTOS --&gt;
+    &lt;div class="nav-dots"&gt;
+        &lt;div class="nav-dot active" data-page="Inicio" onclick="goToPage('index.html')"&gt;&lt;/div&gt;
+        &lt;div class="nav-dot" data-page="Acerca" onclick="goToPage('about.html')"&gt;&lt;/div&gt;
+        &lt;div class="nav-dot" data-page="Servicios" onclick="goToPage('services.html')"&gt;&lt;/div&gt;
+        &lt;div class="nav-dot" data-page="Contacto" onclick="goToPage('contact.html')"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Contenido de tu página --&gt;
+    &lt;div class="content"&gt;
+        &lt;h1&gt;Bienvenido a mi sitio&lt;/h1&gt;
+        &lt;p&gt;Contenido de la página...&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        function goToPage(page) {
+            window.location.href = page;
+        }
+        
+        // Marcar esta página como activa (índice 0 para index.html)
+        setActivePage(0);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goToPage(page) {
+            alert('Navegando a: ' + page);
+            // En tu sitio real, esto llevará a la página correspondiente
+        }
+
+        function setActivePage(pageIndex) {
+            const dots = document.querySelectorAll('.nav-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (index === pageIndex) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+
+        // Esta página sería el índice 0 (index.html)
+        setActivePage(0);
+    </script>
+</body>
+</html>

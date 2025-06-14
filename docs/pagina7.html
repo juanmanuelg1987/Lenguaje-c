@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navegación por Puntos - Tutorial Completo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: slideUp 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2d3748;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .tutorial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tutorial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .tutorial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .code-block {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            position: relative;
+            border: 1px solid #2d3748;
+        }
+
+        .code-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: #2d3748;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .code-block::after {
+            content: '💻 Código';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            color: #a0aec0;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .code-content {
+            margin-top: 30px;
+        }
+
+        .highlight {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 5px;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border: 1px solid #38b2ac;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .info-box::before {
+            content: '💡';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #38b2ac;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fef5e7 0%, #fed7aa 100%);
+            border: 1px solid #f6ad55;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .warning-box::before {
+            content: '⚠️';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #f6ad55;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* NAVEGACIÓN POR PUNTOS - EL CÓDIGO PRINCIPAL */
+        .nav-dots {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.3);
+            border-color: white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-dot.active {
+            background: white;
+            border-color: white;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            transform: scale(1.2);
+        }
+
+        .nav-dot::before {
+            content: attr(data-page);
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-dot:hover::before {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) translateX(-5px);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-dots {
+                right: 15px;
+                gap: 12px;
+            }
+            
+            .nav-dot {
+                width: 12px;
+                height: 12px;
+            }
+            
+            .tutorial-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVEGACIÓN POR PUNTOS -->
+    <div class="nav-dots">
+        <div class="nav-dot active" data-page="Inicio" onclick="scrollToSection('hero')"></div>
+        <div class="nav-dot" data-page="Tutorial" onclick="scrollToSection('tutorial')"></div>
+        <div class="nav-dot" data-page="Código" onclick="scrollToSection('code')"></div>
+        <div class="nav-dot" data-page="Ejemplos" onclick="scrollToSection('examples')"></div>
+    </div>
+
+    <!-- SECCIÓN HERO -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1>🎯 Navegación por Puntos</h1>
+            <p>Tutorial completo para crear una navegación elegante y profesional en tu sitio web</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN TUTORIAL -->
+    <section id="tutorial" class="content-section">
+        <div class="container">
+            <h2 class="section-title">📋 Cómo Implementarlo</h2>
+            
+            <div class="tutorial-card">
+                <div class="card-header">
+                    <div class="step-number">1</div>
+                    <h3 class="card-title">Estructura HTML</h3>
+                </div>
+                <p>Primero, agrega esta estructura HTML justo después de la etiqueta <span class="highlight">&lt;body&gt;</span> en cada página:</p>
+                <div class="code-block">
+                    <div class="code-content">
+&lt;!-- NAVEGACIÓN POR PUNTOS --&gt;
+&lt;div class="nav-dots"&gt;
+    &lt;div class="nav-dot active" data-page="Inicio" onclick="goToPage('index.html')"&gt;&lt;/div&gt;
+    &lt;div class="nav-dot" data-page="Acerca" onclick="goToPage('about.html')"&gt;&lt;/div&gt;
+    &lt;div class="nav-dot" data-page="Servicios" onclick="goToPage('services.html')"&gt;&lt;/div&gt;
+    &lt;div class="nav-dot" data-page="Contacto" onclick="goToPage('contact.html')"&gt;&lt;/div&gt;
+&lt;/div&gt;
+                    </div>
+                </div>
+                <div class="info-box">
+                    <strong>Explicación:</strong><br>
+                    • <code>nav-dots</code>: Contenedor principal<br>
+                    • <code>nav-dot</code>: Cada punto individual<br>
+                    • <code>active</code>: Marca la página actual<br>
+                    • <code>data-page</code>: Texto que aparece al pasar el mouse<br>
+                    • <code>onclick</code>: Función que ejecuta al hacer clic
+                </div>
+            </div>
+
+            <div class="tutorial-card">
+                <div class="card-header">
+                    <div class="step-number">2</div>
+                    <h3 class="card-title">Estilos CSS</h3>
+                </div>
+                <p>Agrega estos estilos en tu archivo CSS o dentro de etiquetas <span class="highlight">&lt;style&gt;</span>:</p>
+                <div class="code-block">
+                    <div class="code-content">
+/* NAVEGACIÓN POR PUNTOS */
+.nav-dots {
+    position: fixed;           /* Se mantiene fijo en pantalla */
+    top: 50%;                 /* Centrado verticalmente */
+    right: 30px;              /* 30px del borde derecho */
+    transform: translateY(-50%); /* Ajuste fino del centrado */
+    display: flex;
+    flex-direction: column;    /* Puntos en columna vertical */
+    gap: 15px;                /* Espacio entre puntos */
+    z-index: 1000;            /* Aparece sobre otros elementos */
+}
+
+.nav-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;       /* Forma circular */
+    background: rgba(255, 255, 255, 0.3); /* Fondo semi-transparente */
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;          /* Cursor de mano al pasar mouse */
+    transition: all 0.4s ease; /* Animación suave */
+    position: relative;
+}
+
+.nav-dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.3);    /* Crece al pasar mouse */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.nav-dot.active {
+    background: white;        /* Punto activo completamente blanco */
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+/* Tooltip (texto que aparece al pasar mouse) */
+.nav-dot::before {
+    content: attr(data-page); /* Toma el texto de data-page */
+    position: absolute;
+    right: 30px;             /* Aparece a la izquierda del punto */
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    white-space: nowrap;     /* No rompe el texto */
+    opacity: 0;              /* Invisible por defecto */
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.nav-dot:hover::before {
+    opacity: 1;              /* Visible al pasar mouse */
+    visibility: visible;
+}
+                    </div>
+                </div>
+                <div class="warning-box">
+                    <strong>Importante:</strong> Estos estilos deben estar presentes en todas las páginas donde quieras mostrar la navegación. Puedes crear un archivo CSS separado (ej: <code>navigation.css</code>) y vincularlo en todas las páginas.
+                </div>
+            </div>
+
+            <div class="tutorial-card">
+                <div class="card-header">
+                    <div class="step-number">3</div>
+                    <h3 class="card-title">JavaScript para Funcionamiento</h3>
+                </div>
+                <p>Agrega este código JavaScript antes de cerrar la etiqueta <span class="highlight">&lt;/body&gt;</span>:</p>
+                <div class="code-block">
+                    <div class="code-content">
+&lt;script&gt;
+// Función para navegar entre páginas
+function goToPage(page) {
+    window.location.href = page;
+}
+
+// Función para marcar la página actual como activa
+function setActivePage(pageIndex) {
+    const dots = document.querySelectorAll('.nav-dot');
+    
+    // Remover clase 'active' de todos los puntos
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    // Agregar clase 'active' al punto correspondiente
+    if (dots[pageIndex]) {
+        dots[pageIndex].classList.add('active');
+    }
+}
+
+// IMPORTANTE: Llamar esta función en cada página
+// index.html    → setActivePage(0);
+// about.html    → setActivePage(1);
+// services.html → setActivePage(2);
+// contact.html  → setActivePage(3);
+
+// Para esta página (asumiendo que es index.html)
+document.addEventListener('DOMContentLoaded', function() {
+    setActivePage(0); // Cambiar según la página actual
+});
+&lt;/script&gt;
+                    </div>
+                </div>
+                <div class="info-box">
+                    <strong>¿Cómo funciona?</strong><br>
+                    • <code>goToPage()</code>: Cambia a la página especificada<br>
+                    • <code>setActivePage()</code>: Marca visualmente qué página está activa<br>
+                    • <code>DOMContentLoaded</code>: Ejecuta el código cuando la página carga completamente
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CÓDIGO COMPLETO -->
+    <section id="code" class="content-section" style="background: #f7fafc;">
+        <div class="container">
+            <h2 class="section-title">💻 Código Completo por Página</h2>
+            
+            <div class="tutorial-card">
+                <div class="card-header">
+                    <div class="step-number">📄</div>
+                    <h3 class="card-title">index.html (Página Principal)</h3>
+                </div>
+                <div class="code-block">
+                    <div class="code-content">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Inicio - Mi Sitio Web&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt; &lt;!-- Tu CSS principal --&gt;
+    &lt;link rel="stylesheet" href="navigation.css"&gt; &lt;!-- CSS de navegación --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- NAVEGACIÓN POR PUNTOS --&gt;
+    &lt;div class="nav-dots"&gt;
+        &lt;div class="nav-dot active" data-page="Inicio" onclick="goToPage('index.html')"&gt;&lt;/div&gt;
+        &lt;div class="nav-dot" data-page="Acerca" onclick="goToPage('about.html')"&gt;&lt;/div&gt;
+        &lt;div class="nav-dot" data-page="Servicios" onclick="goToPage('services.html')"&gt;&lt;/div&gt;
+        &lt;div class="nav-dot" data-page="Contacto" onclick="goToPage('contact.html')"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- CONTENIDO DE LA PÁGINA --&gt;
+    &lt;main&gt;
+        &lt;h1&gt;Bienvenido a mi sitio web&lt;/h1&gt;
+        &lt;p&gt;Este es el contenido de la página principal...&lt;/p&gt;
+    &lt;/main&gt;
+
+    &lt;!-- JAVASCRIPT --&gt;
+    &lt;script&gt;
+        function goToPage(page) {
+            window.location.href = page;
+        }
+
+        function setActivePage(pageIndex) {
+            const dots = document.querySelectorAll('.nav-dot');
+            dots.forEach(dot => dot.classList.remove('active'));
+            if (dots[pageIndex]) {
+                dots[pageIndex].classList.add('active');
+            }
+        }
+
+        // Marcar esta página como activa (índice 0)
+        document.addEventListener('DOMContentLoaded', function() {
+            setActivePage(0);
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                    </div>
+                </div>
+            </div>
+
+            <div class="tutorial-card">
+                <div class="card-header">
+                    <div class="step-number">📄</div>
+                    <h3 class="card-title">about.html (Página Acerca)</h3>
+                </div>
+                <div class="code-block">
+                    <div class="code-content">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Acerca - Mi Sitio Web&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+    &lt;link rel="stylesheet" href="navigation.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- NAVEGACIÓN POR PUNTOS (IGUAL EN TODAS LAS PÁGINAS) --&gt;
+    &lt;div class="nav-dots"&gt;
+        &lt;div class="nav-dot" data-page="Inicio" onclick="goToPage('index.html')"&gt;&lt;/div&gt;
+        &lt;div class="nav-dot active" data-page="Acerca" onclick="goToPage('about.html')"&gt;&lt;/div&gt;
+        &lt;div class="nav-dot" data-page="Servicios" onclick="goToPage('services.html')"&gt;&lt;/div&gt;
+        &lt;div class="nav-dot" data-page="Contacto" onclick="goToPage('contact.html')"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;main&gt;
+        &lt;h1&gt;Acerca de nosotros&lt;/h1&gt;
+        &lt;p&gt;Información sobre la empresa...&lt;/p&gt;
+    &lt;/main&gt;
+
+    &lt;script&gt;
+        function goToPage(page) {
+            window.location.href = page;
+        }
+
+        function setActivePage(pageIndex) {
+            const dots = document.querySelectorAll('.nav-dot');
+            dots.forEach(dot => dot.classList.remove('active'));
+            if (dots[pageIndex]) {
+                dots[pageIndex].classList.add('active');
+            }
+        }
+
+        // Marcar esta página como activa (índice 1)
+        document.addEventListener('DOMContentLoaded', function() {
+            setActivePage(1);
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN EJEMPLOS Y TIPS -->
+    <section id="examples" class="content-section">
+        <div class="container">
+            <h2 class="section-title">✨ Personalización y Tips</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🎨</div>
+                    <h4>Cambiar Colores</h4>
+                    <p>Modifica <code>background</code> y <code>border</code> en .nav-dot para usar tus colores de marca</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <h4>Responsive</h4>
+                    <p>Usa media queries para ajustar tamaño y posición en dispositivos móviles</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Animaciones</h4>
+                    <p>Cambia <code>transition</code> para efectos más rápidos o más lentos</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">📍</div>
+                    <h4>Posición</h4>
+                    <p>Cambia <code>right</code> por <code>left</code> para mostrar en el lado izquierdo</p>
+                </div>
+            </div>
+
+            <div class="tutorial-card">
+                <div class="card-header">
+                    <div class="step-number">🔧</div>
+                    <h3 class="card-title">Organización de Archivos Recomendada</h3>
+                </div>
+                <div class="code-block">
+                    <div class="code-content">
+mi-sitio-web/
+├── index.html
+├── about.html
+├── services.html
+├── contact.html
+├── css/
+│   ├── styles.css      ← Estilos principales
+│   └── navigation.css  ← Estilos de navegación por puntos
+└── js/
+    └── navigation.js   ← JavaScript de navegación (opcional)
+                    </div>
+                </div>
+                <div class="info-box">
+                    <strong>Ventaja de archivos separados:</strong><br>
+                    • Fácil mantenimiento<br>
+                    • Reutilización en múltiples páginas<br>
+                    • Código más organizado<br>
+                    • Actualizaciones centralizadas
+                </div>
+            </div>
+
+            <div class="tutorial-card">
+                <div class="card-header">
+                    <div class="step-number">⚠️</div>
+                    <h3 class="card-title">Errores Comunes a Evitar</h3>
+                </div>
+                <div class="warning-box">
+                    <strong>❌ Errores frecuentes:</strong><br>
+                    • No cambiar el índice en <code>setActivePage()</code> para cada página<br>
+                    • Olvidar incluir el CSS en todas las páginas<br>
+                    • No ajustar los nombres de archivo en <code>onclick</code><br>
+                    • No probar en dispositivos móviles<br><br>
+                    <strong>✅ Solución:</strong> Revisa cada página individualmente y verifica que la navegación funcione correctamente.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Actualizar punto activo
+                const dots = document.querySelectorAll('.nav-dot');
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                const sectionIndex = ['hero', 'tutorial', 'code', 'examples'].indexOf(sectionId);
+                if (dots[sectionIndex]) {
+                    dots[sectionIndex].classList.add('active');
+                }
+            }
+        }
+
+        // Detectar sección actual al hacer scroll
+        window.addEventListener('scroll', function() {
+            const sections = ['hero', 'tutorial', 'code', 'examples'];
+            const dots = document.querySelectorAll('.nav-dot');
+            
+            let current = '';
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 150 && rect.bottom >= 150) {
+                        current = sectionId;
+                    }
+                }
+            });
+            
+            if (current) {
+                const currentIndex = sections.indexOf(current);
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
