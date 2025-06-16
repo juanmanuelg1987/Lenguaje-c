@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>😎 Botones Flotantes</title>
+    <title>😎 Botones Flotantes - Sin JavaScript</title>
     <style>
         * {
             margin: 0;
@@ -239,12 +239,7 @@
             transform: translateY(-5px);
         }
 
-        /* ESTILOS PARA MOSTRAR/OCULTAR BOTONES SEGÚN SCROLL */
-        .btn-group-1 { opacity: 1; transition: opacity 0.5s ease; }
-        .btn-group-2 { opacity: 0; transition: opacity 0.5s ease; }
-        .btn-group-3 { opacity: 0; transition: opacity 0.5s ease; }
-
-        /* INDICADOR DE SCROLL */
+        /* INDICADOR DE SCROLL - ESTÁTICO */
         .scroll-indicator {
             position: fixed;
             top: 20px;
@@ -279,18 +274,11 @@
             transform: scale(1.3);
         }
 
-
-.button-container {
-    position: relative;
-    text-align: right;
-    margin-top: 50px;
-}
-
-
-
-
-
-
+        .button-container {
+            position: relative;
+            text-align: right;
+            margin-top: 50px;
+        }
 
         .floating-button {
             position: absolute;
@@ -310,26 +298,46 @@
             display: flex;
             align-items: center;
             gap: 10px;
-       animation: bounce-grow 5s infinite;
-      
+            animation: bounce-grow 5s infinite;
         }
-@keyframes bounce-grow {
-    0%, 100% {
-        transform: translateY(0) scale(1);
-    }
-    50% {
-        transform: translateY(-10px) scale(1.1);
 
+        @keyframes bounce-grow {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-10px) scale(1.1);
+            }
+        }
 
-
-
+        /* NOTA INFORMATIVA */
+        .no-js-notice {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: rgba(255, 193, 7, 0.9);
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 10px;
+            z-index: 2001;
+            font-size: 12px;
+            max-width: 200px;
+            text-align: center;
+            border: 2px solid #ffc107;
+        }
     </style>
 </head>
 <body>
-    <!-- INDICADOR DE SECCIÓN -->
-    <div class="scroll-indicator" id="indicator">Sección 1: Introducción</div>
+    <!-- AVISO DE QUE NO HAY JAVASCRIPT -->
+    <div class="no-js-notice">
+        ⚠️ Versión sin JavaScript<br>
+        Los botones no cambian al hacer scroll
+    </div>
+
+    <!-- INDICADOR DE SECCIÓN - ESTÁTICO -->
+    <div class="scroll-indicator">Todos los botones flotantes visibles</div>
     
-    <!-- NAVEGACIÓN POR PUNTOS -->
+    <!-- NAVEGACIÓN POR PUNTOS - ESTÁTICA -->
     <div class="nav-dots">
         <div class="nav-dot active"></div>
         <div class="nav-dot"></div>
@@ -346,8 +354,6 @@
                 Aprende a crear diferentes tipos de botones flotantes con HTML y CSS
             </p>
 
-        
-            
             <div class="explanation">
                 <h3>¿Qué es un botón flotante?</h3>
                 <p><strong>Un botón flotante</strong> es un elemento que permanece fijo en la pantalla independientemente del scroll. Se posiciona usando <span class="highlight">position: fixed</span> y coordenadas específicas.</p>
@@ -364,7 +370,8 @@
             </div>
 
             <p style="text-align: center; font-size: 1.1em; margin-top: 30px;">
-                <strong>👇 Haz scroll para ver diferentes ejemplos</strong>
+                <strong>👇 Haz scroll para ver diferentes ejemplos</strong><br>
+                <em>(Sin JavaScript todos los botones son visibles)</em>
             </p>
         </div>
     </section>
@@ -376,7 +383,7 @@
             
             <div class="explanation">
                 <p>Este es el ejemplo más simple. Un círculo rojo fijo en la esquina inferior derecha.</p>
-                <p><strong>Mira la esquina inferior derecha</strong> → Ahí está el botón básico</p>
+                <p><strong>Mira la esquina inferior derecha</strong> → Ahí está el botón básico (📧)</p>
             </div>
 
             <div class="code-block">
@@ -395,13 +402,6 @@
     z-index: 1000;         /* Por encima de todo */
 }
             </div>
-
-            <div class="explanation">
-                <p><strong>Propiedades clave:</strong></p>
-                <p>• <span class="highlight">border-radius: 50%</span> → Crea la forma circular perfecta</p>
-                <p>• <span class="highlight">z-index: 1000</span> → Se asegura que aparezca por encima</p>
-                <p>• <span class="highlight">cursor: pointer</span> → Indica que es clickeable</p>
-            </div>
         </div>
     </section>
 
@@ -411,39 +411,27 @@
             <h2>2️⃣ Efectos y Transiciones</h2>
             
             <div class="explanation">
-                <p>Ahora vamos a agregar efectos visuales para mejorar la experiencia del usuario.</p>
+                <p>Efectos visuales que funcionan solo con CSS (sin JavaScript).</p>
                 <p><strong>Observa los botones</strong> → Pasa el mouse por encima para ver los efectos</p>
             </div>
 
             <div class="code-block">
-.btn-transitions {
-    /* ... propiedades básicas ... */
-    transition: all 0.3s ease;  /* Transición suave */
-}
-
 .btn-transitions:hover {
     transform: scale(1.2);      /* Crece 20% */
     background: #45b7b8;        /* Cambia color */
 }
-            </div>
 
-            <div class="explanation">
-                <p><strong>Efectos implementados:</strong></p>
-                <p>• <span class="highlight">Botón celeste</span> → Crece al pasar el mouse</p>
-                <p>• <span class="highlight">Botón morado</span> → Animación de rebote constante</p>
-                <p>• <span class="highlight">Botón rosa</span> → Cambia de cuadrado a círculo</p>
-            </div>
-
-            <div class="code-block">
-/* Animación de rebote */
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
+            </div>
 
-.btn-animated {
-    animation: bounce 2s infinite;
-}
+            <div class="explanation">
+                <p><strong>Efectos que SÍ funcionan sin JavaScript:</strong></p>
+                <p>• <span class="highlight">:hover</span> → Efectos al pasar el mouse</p>
+                <p>• <span class="highlight">@keyframes</span> → Animaciones CSS automáticas</p>
+                <p>• <span class="highlight">transition</span> → Transiciones suaves</p>
             </div>
         </div>
     </section>
@@ -454,132 +442,60 @@
             <h2>3️⃣ Efectos Avanzados</h2>
             
             <div class="explanation">
-                <p>Estos efectos hacen que los botones sean más llamativos y profesionales.</p>
-                <p><strong>Mira los botones de la segunda fila</strong> → Efectos de pulso y sombra</p>
+                <p>Efectos avanzados que funcionan puramente con CSS.</p>
+                <p><strong>Todos los botones están visibles</strong> → Sin JavaScript no se ocultan/muestran según scroll</p>
             </div>
 
             <div class="code-block">
-/* Efecto de pulso */
-.btn-pulse::before {
-    content: '';
-    position: absolute;
-    border: 2px solid #00b894;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-}
-
+/* Efecto de pulso - funciona sin JavaScript */
 @keyframes pulse {
     0% { transform: scale(1); opacity: 1; }
     100% { transform: scale(1.5); opacity: 0; }
 }
+
+/* Sombra con efecto de elevación */
+.btn-shadow:hover {
+    transform: translateY(-5px);
+}
             </div>
 
             <div class="explanation">
-                <p><strong>Efectos mostrados:</strong></p>
-                <p>• <span class="highlight">Botón verde</span> → Animación de pulso que llama la atención</p>
-                <p>• <span class="highlight">Botón naranja</span> → Sombra intensa que "levanta" el botón</p>
-            </div>
-
-            <div class="code-block">
-/* Sombra con efecto de elevación */
-.btn-shadow {
-    box-shadow: 0 8px 25px rgba(225, 112, 85, 0.6);
-}
-
-.btn-shadow:hover {
-    box-shadow: 0 15px 40px rgba(225, 112, 85, 0.8);
-    transform: translateY(-5px);  /* "Eleva" el botón */
-}
+                <p><strong>Lo que NO funciona sin JavaScript:</strong></p>
+                <p>• ❌ Cambio de botones según scroll</p>
+                <p>• ❌ Actualización del indicador de sección</p>
+                <p>• ❌ Cambio de puntos de navegación</p>
+                <p>• ❌ Interactividad dinámica</p>
+                
+                <p><strong>Lo que SÍ funciona sin JavaScript:</strong></p>
+                <p>• ✅ Todas las animaciones CSS</p>
+                <p>• ✅ Efectos hover</p>
+                <p>• ✅ Transiciones</p>
+                <p>• ✅ Posicionamiento flotante</p>
             </div>
 
             <div class="explanation">
                 <p style="text-align: center; font-size: 1.2em; color: #4a5568; margin-top: 30px;">
                     <strong>Espero que les guste! De parte de German, Nadia, Denis y Juan</strong><br>
-                    Estos ejemplos muestran el poder del CSS para crear interfaces interactivas.
+                    Estos ejemplos muestran que CSS puede hacer mucho por sí solo.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- BOTONES FLOTANTES - GRUPO 1 (Básicos) -->
-    <div class="btn-group-1">
-        <button class="btn-basic" title="Botón Básico">📧</button>
+    <!-- TODOS LOS BOTONES FLOTANTES VISIBLES -->
+    <button class="btn-basic" title="Botón Básico">📧</button>
+    <button class="btn-transitions" title="Con Transiciones">💬</button>
+    <button class="btn-animated" title="Con Animación">🎯</button>
+    <button class="btn-square" title="Forma Cuadrada">⭐</button>
+    <button class="btn-pulse" title="Con Pulso">🔔</button>
+    <button class="btn-shadow" title="Con Sombra">🚀</button>
+
+    <div class="button-container">
+        <a href="pagina2.html" class="floating-button">
+            ¿Querés mas? 👀
+        </a>
     </div>
-
-    <!-- BOTONES FLOTANTES - GRUPO 2 (Con efectos) -->
-    <div class="btn-group-2">
-        <button class="btn-basic" title="Botón Básico">📧</button>
-        <button class="btn-transitions" title="Con Transiciones">💬</button>
-        <button class="btn-animated" title="Con Animación">🎯</button>
-        <button class="btn-square" title="Forma Cuadrada">⭐</button>
-    </div>
-
-    <!-- BOTONES FLOTANTES - GRUPO 3 (Efectos avanzados) -->
-    <div class="btn-group-3">
-        <button class="btn-basic" title="Botón Básico">📧</button>
-        <button class="btn-transitions" title="Con Transiciones">💬</button>
-        <button class="btn-animated" title="Con Animación">🎯</button>
-        <button class="btn-square" title="Forma Cuadrada">⭐</button>
-        <button class="btn-pulse" title="Con Pulso">🔔</button>
-        <button class="btn-shadow" title="Con Sombra">🚀</button>
-    </div>
-
-
-
-
-
-<div class="button-container">
-    <a href="sin-javascript.html" class="floating-button">
-        ¿Querés mas? 👀
-    </a>
-
-
-
-
-
-
-</div>
-    <script>
-        // Script para manejar el scroll y mostrar diferentes grupos de botones
-        window.addEventListener('scroll', function() {
-            const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-            const indicators = ['Sección 1: Introducción', 'Sección 2: Botón Básico', 'Sección 3: Efectos y Transiciones', 'Sección 4: Efectos Avanzados'];
-            const dots = document.querySelectorAll('.nav-dot');
-            
-            let currentSection = Math.floor(scrollPercent * 4);
-            if (currentSection >= 4) currentSection = 3;
-            
-            // Actualizar indicador
-            document.getElementById('indicator').textContent = indicators[currentSection];
-            
-            // Actualizar puntos de navegación
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSection);
-            });
-            
-            // Mostrar/ocultar grupos de botones según la sección
-            const group1 = document.querySelector('.btn-group-1');
-            const group2 = document.querySelector('.btn-group-2');
-            const group3 = document.querySelector('.btn-group-3');
-            
-            if (currentSection === 0) {
-                group1.style.opacity = '1';
-                group2.style.opacity = '0';
-                group3.style.opacity = '0';
-            } else if (currentSection === 1) {
-                group1.style.opacity = '1';
-                group2.style.opacity = '0';
-                group3.style.opacity = '0';
-            } else if (currentSection === 2) {
-                group1.style.opacity = '0';
-                group2.style.opacity = '1';
-                group3.style.opacity = '0';
-            } else {
-                group1.style.opacity = '0';
-                group2.style.opacity = '0';
-                group3.style.opacity = '1';
-            }
-        });
-    </script>
+    
+    <!-- SIN JAVASCRIPT -->
 </body>
 </html>

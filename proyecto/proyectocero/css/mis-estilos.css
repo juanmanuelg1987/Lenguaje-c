@@ -1,0 +1,384 @@
+
+
+body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+
+
+
+
+
+
+
+
+
+.destacado {
+    color: red;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+.navbar {
+    background-color: #333;
+    padding: 10px 0;
+    position: sticky;  /* o fixed si querés que quede siempre arriba */
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+        .section {
+            min-height: 100vh;
+            padding: 50px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+
+        .explanation {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+
+        .highlight {
+            background: #ffd700;
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* BOTÓN FLOTANTE BÁSICO */
+        .btn-basic {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #ff6b6b;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* BOTÓN CON TRANSICIONES */
+        .btn-transitions {
+            position: fixed;
+            bottom: 30px;
+            right: 120px;
+            width: 60px;
+            height: 60px;
+            background: #4ecdc4;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-transitions:hover {
+            transform: scale(1.2);
+            background: #45b7b8;
+        }
+
+        /* BOTÓN CON ANIMACIÓN */
+        .btn-animated {
+            position: fixed;
+            bottom: 30px;
+            right: 210px;
+            width: 60px;
+            height: 60px;
+            background: #6c5ce7;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* BOTÓN CUADRADO */
+        .btn-square {
+            position: fixed;
+            bottom: 30px;
+            right: 300px;
+            width: 60px;
+            height: 60px;
+            background: #fd79a8;
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-square:hover {
+            border-radius: 50%;
+            transform: rotate(180deg);
+        }
+
+        /* BOTÓN CON PULSO */
+        .btn-pulse {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #00b894;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-pulse::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            border: 2px solid #00b894;
+            animation: pulse 2s infinite;
+            opacity: 0;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* BOTÓN CON SOMBRA INTENSA */
+        .btn-shadow {
+            position: fixed;
+            bottom: 120px;
+            right: 120px;
+            width: 60px;
+            height: 60px;
+            background: #e17055;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(225, 112, 85, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .btn-shadow:hover {
+            box-shadow: 0 15px 40px rgba(225, 112, 85, 0.8);
+            transform: translateY(-5px);
+        }
+
+        /* ESTILOS PARA MOSTRAR/OCULTAR BOTONES SEGÚN SCROLL */
+        .btn-group-1 { opacity: 1; transition: opacity 0.5s ease; }
+        .btn-group-2 { opacity: 0; transition: opacity 0.5s ease; }
+        .btn-group-3 { opacity: 0; transition: opacity 0.5s ease; }
+
+        /* INDICADOR DE SCROLL */
+        .scroll-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            z-index: 2000;
+            font-size: 14px;
+        }
+
+        .nav-dots {
+            position: fixed;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2000;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+
+
+.button-container {
+    position: relative;
+    text-align: right;
+    margin-top: 50px;
+}
+
+
+
+
+
+
+
+        .floating-button {
+            position: absolute;
+            bottom: 100px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 15px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+       animation: bounce-grow 5s infinite;
+      
+        }
+@keyframes bounce-grow {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.1);
+
+
+
+
+
+
+
+
+        
